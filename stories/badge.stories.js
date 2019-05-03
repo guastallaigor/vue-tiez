@@ -35,24 +35,23 @@ zBadgeStory.add('Template', () => ({
   },
   template: '<z-badge :text="text" :color="color" />'
 }))
-.add('JSX', () => ({
-  components: { ZBadge },
-  props: {
-    text: {
-      type: String,
-      default: text('Text', '10')
+  .add('JSX', () => ({
+    components: { ZBadge },
+    props: {
+      text: {
+        type: String,
+        default: text('Text', '10')
+      },
+      color: {
+        type: String,
+        default: radios('Color', {
+          'black': 'black',
+          'red': 'red',
+          'dark': 'dark'
+        }, 'black')
+      }
     },
-    color: {
-      type: String,
-      default: radios('Color', {
-        'black': 'black',
-        'red': 'red',
-        'dark': 'dark'
-      }, 'black')
+    render () {
+      return <ZBadge text={this.text} color={this.color} />
     }
-  },
-  render() {
-    return <ZBadge text={this.text} color={this.color} />
-  }
-}))
-
+  }))

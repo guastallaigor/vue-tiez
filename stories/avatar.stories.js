@@ -70,7 +70,7 @@ zAvatarStory.add('Template', () => ({
       }
     },
     render () {
-      const elements = ['1', '2', '3'];
+      const elements = ['1', '2', '3']
 
       const items = []
 

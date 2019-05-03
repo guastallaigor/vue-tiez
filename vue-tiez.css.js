@@ -1,8 +1,10 @@
-import MyButton from './src/components/MyButton.vue'
+import ZAvatar from './src/components/ZAvatar.vue'
+import ZBadge from './src/components/ZBadge.vue'
 
 // Export components
 const Components = {
-  MyButton
+  ZAvatar,
+  ZBadge
 }
 
 const VueTiezPlugin = {
@@ -18,5 +20,6 @@ export default VueTiezPlugin
 
 // Export as individual components
 export {
-  MyButton
+  ZAvatar,
+  ZBadge
 }
