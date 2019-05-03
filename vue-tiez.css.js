@@ -5,7 +5,7 @@ const Components = {
   MyButton
 }
 
-const VueZeitPlugin = {
+const VueTiezPlugin = {
   install (Vue) {
     Object.keys(Components).forEach((name) => {
       Vue.component(name, Components[name])
@@ -14,7 +14,7 @@ const VueZeitPlugin = {
 }
 
 // Export as a plugin
-export default VueZeitPlugin
+export default VueTiezPlugin
 
 // Export as individual components
 export {

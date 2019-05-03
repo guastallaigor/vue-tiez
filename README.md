@@ -1,4 +1,4 @@
-# vue-zeit
+# vue-tiez
 
 ## Project setup
 ```
