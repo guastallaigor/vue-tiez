@@ -23,7 +23,35 @@ zCheckboxStory.add('Template', () => ({
     value: {
       type: Boolean,
       default: boolean('Check', true)
+    },
+    disabled: {
+      type: Boolean,
+      default: boolean('Disabled', false)
+    },
+    dark: {
+      type: Boolean,
+      default: boolean('Dark', false)
     }
   },
-  template: '<z-checkbox v-model="value" />'
+  template: '<z-checkbox v-model="value" :disabled="disabled" :dark="dark" />'
 }))
+  .add('JSX', () => ({
+    components: { ZCheckbox },
+    props: {
+      value: {
+        type: Boolean,
+        default: boolean('Check', true)
+      },
+      disabled: {
+        type: Boolean,
+        default: boolean('Disabled', false)
+      },
+      dark: {
+        type: Boolean,
+        default: boolean('Dark', false)
+      }
+    },
+    render () {
+      return <ZCheckbox disabled={this.disabled} dark={this.dark} vModel={this.value} />
+    }
+  }))
