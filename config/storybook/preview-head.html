@@ -1,19 +1,26 @@
 <style>
 html, body, #root {
   align-items: center;
-  background-color: transparent !important;
+  background-color: transparent;
   display: flex;
   height: 97vh;
   justify-content: center;
   width: 100vw;
+
+  /* this needs to be inside */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* this needs to be inside */
+::selection {
+  background-color: #79FFE1;
+  color: #000;
 }
 
 #root {
   padding: 20px;
-}
-
-.custom-class {
-  color: red;
 }
 </style>
     

@@ -17,7 +17,7 @@ const zAvatarStory = storiesOf('Avatar', module)
   ] })
   .addDecorator(withKnobs)
 
-zAvatarStory.add('Normal Avatar Template', () => ({
+zAvatarStory.add('Template', () => ({
   components: { ZAvatar },
   props: {
     src: {
@@ -44,7 +44,7 @@ zAvatarStory.add('Normal Avatar Template', () => ({
   },
   template: `<div><z-avatar v-for="n in 3" :key="n" :size="size" :src="src" :dark="dark" :stacked="stacked" /></div>`
 }))
-  .add('Normal Avatar JSX', () => ({
+  .add('JSX', () => ({
     components: { ZAvatar },
     props: {
       src: {

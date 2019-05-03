@@ -1,12 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
 import { withKnobs, text, radios } from '@storybook/addon-knobs'
-// import { action } from '@storybook/addon-actions'
-// import { linkTo } from '@storybook/addon-links'
 
-import ZAvatar from '../src/components/ZAvatar.vue'
+import ZBadge from '../src/components/ZBadge.vue'
 
-const zAvatarStory = storiesOf('Badges', module)
+const zBadgeStory = storiesOf('Badge', module)
   .addParameters({ backgrounds: [
     { name: 'Blue', value: 'blue' },
     { name: 'Green', value: 'green' },
@@ -19,29 +17,42 @@ const zAvatarStory = storiesOf('Badges', module)
   ] })
   .addDecorator(withKnobs)
 
-zAvatarStory.add('z-badge', () => ({
-  components: { ZAvatar },
+zBadgeStory.add('Template', () => ({
+  components: { ZBadge },
   props: {
-    src: {
+    text: {
       type: String,
-      default: text('Image source', 'https://ik.imagekit.io/6xhf1gnexgdgk/igor2_HJhiHMa54.png')
+      default: text('Text', '10')
     },
-    size: {
+    color: {
       type: String,
-      default: radios('Size', {
-        'small': 'small',
-        default: '',
-        'medium': 'medium',
-        'large': 'large'
-      }, '')
+      default: radios('Color', {
+        'black': 'black',
+        'red': 'red',
+        'dark': 'dark'
+      }, 'black')
     }
   },
-  template: '<img class="z-avatar" :class="size" :src="src" />'
+  template: '<z-badge :text="text" :color="color" />'
 }))
-// .add('with JSX', () => ({
-//   components: { ZAvatar },
-//   render () {
-//     return <my-button onClick={this.action}>With JSX</my-button>
-//   },
-//   methods: { action: linkTo('Button', 'with some emoji') }
-// }))
+.add('JSX', () => ({
+  components: { ZBadge },
+  props: {
+    text: {
+      type: String,
+      default: text('Text', '10')
+    },
+    color: {
+      type: String,
+      default: radios('Color', {
+        'black': 'black',
+        'red': 'red',
+        'dark': 'dark'
+      }, 'black')
+    }
+  },
+  render() {
+    return <ZBadge text={this.text} color={this.color} />
+  }
+}))
+
