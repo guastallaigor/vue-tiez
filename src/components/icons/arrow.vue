@@ -1,0 +1,3 @@
+<template functional>
+  <svg :width="props.size || '20px'" :height="props.size || '20px'" viewBox="0 0 17 17" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="arrow"><g transform="translate(1.000000, 1.000000)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><circle stroke="#eaeaea" cx="7.5" cy="7.5" r="7.5"></circle><g transform="translate(7.500000, 7.500000) rotate(-90.000000) translate(-7.500000, -7.500000) translate(5.000000, 6.000000)" :stroke="props.dark ? '#ccc' : '#999'"><path d="M.167.188l2.7 2.651"></path><path d="M4.857.188L2.3 2.838"></path></g></g></svg>
+</template>
