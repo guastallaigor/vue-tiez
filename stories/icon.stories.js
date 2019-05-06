@@ -25,7 +25,24 @@ zIconStory.add('Template', () => ({
       default: radios('Name', {
         'add': 'add',
         'arrow': 'arrow',
-        'arrow-double': 'arrow-double'
+        'arrow-double': 'arrow-double',
+        'up': 'up',
+        'down': 'down',
+        'left': 'left',
+        'right': 'right',
+        'camera': 'camera',
+        'big-camera': 'big-camera',
+        'checked': 'checked',
+        'unchecked': 'unchecked',
+        'checkmark': 'checkmark',
+        'cloud': 'cloud',
+        'configuration': 'configuration',
+        'copy': 'copy',
+        'credit-card': 'credit-card',
+        'delete': 'delete',
+        'directory': 'directory',
+        'close': 'close',
+        'open': 'open'
       }, 'add')
     },
     size: {
@@ -34,7 +51,7 @@ zIconStory.add('Template', () => ({
     },
     dark: {
       type: Boolean,
-      default: boolean('Dark', true)
+      default: boolean('Dark', false)
     }
   },
   template: '<z-icon :name="name" :size="size" :dark="dark" />'
