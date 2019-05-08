@@ -1,7 +1,7 @@
 <template>
-  <div class="z-show-more" :class="{'dark': dark}">
+  <div class="z-show-more-toggle" :class="{'dark': dark}">
     <div class="line"></div>
-    <button @click="$emit('click')" class="show-more">Show More
+    <button @click="$emit('click')" class="show-more-toggle">{{ more ? 'Show More' : 'Show Less' }}
       <svg width="13px" height="6px" viewBox="0 0 19 10" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g transform="translate(9.000000, 5.000000) rotate(-90.000000) translate(-9.000000, -5.000000) translate(4.000000, -4.000000)" :stroke="dark ? '#fff' : '#000'" stroke-width="1.5" fill="none" fill-rule="evenodd">
           <path d="M9.5 18L.729 9.253"></path>
@@ -15,8 +15,12 @@
 
 <script>
 export default {
-  name: 'z-show-more',
+  name: 'z-show-more-toggle',
   props: {
+    more: {
+      type: Boolean,
+      default: false
+    },
     dark: {
       type: Boolean,
       default: false
@@ -26,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-.z-show-more {
+.z-show-more-toggle {
   width: calc(100% - 40px);
   margin-top: 20px;
   margin-left: 20px;
@@ -42,7 +46,7 @@ export default {
     background-color: rgb(234, 234, 234);
   }
 
-  .show-more {
+  .show-more-toggle {
     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
     cursor: pointer;
     font-size: 12px;
@@ -70,7 +74,7 @@ export default {
       background-color: rgb(51, 51, 51);
     }
 
-    .show-more {
+    .show-more-toggle {
       color: rgb(153, 153, 153);
       background-color: rgb(0, 0, 0);
       border-width: 1px;

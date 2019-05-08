@@ -3,9 +3,9 @@ import { storiesOf } from '@storybook/vue'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-import ZShowMore from '../src/components/ZShowMore.vue'
+import ZShowMoreToggle from '../src/components/ZShowMoreToggle.vue'
 
-const zShowMoreStory = storiesOf('Show More', module)
+const zShowMoreToggleStory = storiesOf('Show More', module)
   .addParameters({ backgrounds: [
     { name: 'Blue', value: 'blue' },
     { name: 'Green', value: 'green' },
@@ -18,27 +18,35 @@ const zShowMoreStory = storiesOf('Show More', module)
   ] })
   .addDecorator(withKnobs)
 
-zShowMoreStory.add('Template', () => ({
-  components: { ZShowMore },
+zShowMoreToggleStory.add('Template', () => ({
+  components: { ZShowMoreToggle },
   methods: { action: action('Show more clicked!') },
   props: {
+    more: {
+      type: Boolean,
+      default: boolean('More', true)
+    },
     dark: {
       type: Boolean,
       default: boolean('Dark', false)
     }
   },
-  template: '<z-show-more :dark="dark" @click="action" />'
+  template: '<z-show-more-toggle :dark="dark" @click="action" :more="more" />'
 }))
   .add('JSX', () => ({
-    components: { ZShowMore },
+    components: { ZShowMoreToggle },
     methods: { action: action('Show more clicked!') },
     props: {
+      more: {
+        type: Boolean,
+        default: boolean('More', true)
+      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
       }
     },
     render () {
-      return <ZShowMore dark={this.dark} onClick={this.action} />
+      return <ZShowMoreToggle dark={this.dark} onClick={this.action} more={this.more} />
     }
   }))
