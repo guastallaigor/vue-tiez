@@ -68,8 +68,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url(../scss/input.scss);
-
 .z-checkbox {
   cursor: default;
 

@@ -1,0 +1,75 @@
+@mixin set-bg-and-color($background, $color) {
+  background: $background;
+  color: $color;
+}
+
+.black {
+  @include set-bg-and-color(#000000, #ffffff);
+}
+
+.white {
+  @include set-bg-and-color(#ffffff, #000000);
+}
+
+.blue-dark {
+  @include set-bg-and-color(#0076FF, #ffffff);
+}
+
+.blue-light {
+  @include set-bg-and-color(#FAFBFC, #000000);
+}
+
+.pink {
+  @include set-bg-and-color(#D400FF, #ffffff);
+}
+
+.red {
+  @include set-bg-and-color(#FF0000, #ffffff);
+}
+
+.magenta {
+  @include set-bg-and-color(#FF0080, #ffffff);
+}
+
+.orange-dark {
+  @include set-bg-and-color(#D9931E, #ffffff);
+}
+
+.orange-light {
+  @include set-bg-and-color(#D9931E, #ffffff);
+}
+
+.yellow {
+  @include set-bg-and-color(#F8E71C, #ffffff);
+}
+
+.teal {
+  @include set-bg-and-color(#50E3C2, #ffffff);
+}
+
+.cyan {
+  @include set-bg-and-color(#79FFE1, #000000);
+}
+
+.green-light {
+  @include set-bg-and-color(#2CBE4E, #ffffff);
+}
+
+.green-dark {
+  @include set-bg-and-color(#028265, #ffffff);
+}
+
+$blacks: #FAFAFA, #EAEAEA, #999999;
+$whites: #888888, #666666, #444444, #333333;
+
+@for $i from 1 through length($blacks) {
+  .grey-#{$i} {
+      @include set-bg-and-color(nth($blacks, $i), #000000);
+  }
+}
+
+@for $j from 1 through length($whites) {
+  .grey-#{$j + 3} {
+      @include set-bg-and-color(nth($whites, $j), #ffffff);
+  }
+}

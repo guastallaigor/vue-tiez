@@ -1,0 +1,47 @@
+@mixin set-heading($weight: 400, $size: 32px, $lheight: 42px, $mbs: 0.67em, $mbe: 0.67em, $mis: 0px, $mie: 0px) {
+  color: #000000;
+  font-weight: $weight;
+  font-size: $size;
+
+  @if ($lheight != 0) {
+    line-height: $lheight;
+  }
+
+  margin-block-start: $mbs;
+  margin-block-end: $mbe;
+  margin-inline-start: $mis;
+  margin-inline-end: $mie;
+  display: block;
+
+  &.dark {
+    color: #ffffff;
+  }
+}
+
+h1 {
+  @include set-heading();
+}
+
+h2 {
+  @include set-heading(400, 24px, 0, 0.83em, 0.83em);
+}
+
+h3 {
+  @include set-heading(bold, 26px, 1.45em, 1em, 1em);
+}
+
+h4 {
+  @include set-heading(bold, 18px, 0, 1.33em, 1.33em);
+}
+
+.subheading {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgb(153, 153, 153);
+  text-transform: uppercase;
+
+  &.dark {
+    color: rgb(170, 170, 170);
+  }
+}

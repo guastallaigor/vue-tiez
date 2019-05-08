@@ -1,0 +1,54 @@
+@mixin set-dark() {
+  &.dark {
+    color: rgb(255, 255, 255);
+  }
+}
+
+@mixin set-list($lst: none) {
+  color: #000000;
+  margin-left: 15px;
+  padding: 0px;
+  display: block;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+
+  @include set-dark();
+}
+
+@mixin set-itens() {
+  font-size: 1rem;
+  line-height: 1.625rem;
+  margin-bottom: 10px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+
+  @include set-dark();
+}
+
+ul {
+  @include set-list();
+
+  li {
+    @include set-itens();
+
+    &::before {
+      content: "–";
+      display: inline-block;
+      color: rgb(153, 153, 153);
+      position: absolute;
+      margin-left: -15px;
+    }
+  }
+}
+
+ol {
+  @include set-list(decimal);
+
+  li {
+    @include set-itens();
+  }
+}
