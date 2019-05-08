@@ -1,10 +1,16 @@
 import ZAvatar from './src/components/ZAvatar.vue'
 import ZBadge from './src/components/ZBadge.vue'
+import ZCheckbox from './src/components/ZCheckbox.vue'
+import ZIcon from './src/components/ZIcon.vue'
+import ZCode from './src/components/ZCode.vue'
 
 // Export components
 const Components = {
   ZAvatar,
-  ZBadge
+  ZBadge,
+  ZCheckbox,
+  ZIcon,
+  ZCode
 }
 
 const VueTiezPlugin = {
@@ -21,5 +27,8 @@ export default VueTiezPlugin
 // Export as individual components
 export {
   ZAvatar,
-  ZBadge
+  ZBadge,
+  ZCheckbox,
+  ZIcon,
+  ZCode
 }
