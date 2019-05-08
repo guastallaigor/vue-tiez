@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 
 import ZShowMoreToggle from '../src/components/ZShowMoreToggle.vue'
 
-const zShowMoreToggleStory = storiesOf('Show More', module)
+const zShowMoreToggleStory = storiesOf('Show More Toggle', module)
   .addParameters({ backgrounds: [
     { name: 'Blue', value: 'blue' },
     { name: 'Green', value: 'green' },
