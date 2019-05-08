@@ -20,9 +20,9 @@ const zCodeStory = storiesOf('Code', module)
 zCodeStory.add('Template', () => ({
   components: { ZCode },
   props: {
-    text: {
+    content: {
       type: String,
-      default: text('Text', 'npm --version')
+      default: text('Content', 'npm --version')
     },
     withDolar: {
       type: Boolean,
@@ -33,14 +33,14 @@ zCodeStory.add('Template', () => ({
       default: boolean('Dark', false)
     }
   },
-  template: '<z-code :text="text" :dark="dark" :with-dolar="withDolar" />'
+  template: '<z-code :content="content" :dark="dark" :with-dolar="withDolar" />'
 }))
   .add('JSX', () => ({
     components: { ZCode },
     props: {
-      text: {
+      content: {
         type: String,
-        default: text('Text', 'npm --version')
+        default: text('Content', 'npm --version')
       },
       withDolar: {
         type: Boolean,
@@ -52,6 +52,6 @@ zCodeStory.add('Template', () => ({
       }
     },
     render () {
-      return <ZCode text={this.text} dark={this.dark} withDolar={this.withDolar} />
+      return <ZCode content={this.content} dark={this.dark} withDolar={this.withDolar} />
     }
   }))

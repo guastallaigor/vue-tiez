@@ -3,6 +3,7 @@ import ZBadge from './src/components/ZBadge.vue'
 import ZCheckbox from './src/components/ZCheckbox.vue'
 import ZIcon from './src/components/ZIcon.vue'
 import ZCode from './src/components/ZCode.vue'
+import ZNote from './src/components/ZNote.vue'
 
 // Export components
 const Components = {
@@ -10,7 +11,8 @@ const Components = {
   ZBadge,
   ZCheckbox,
   ZIcon,
-  ZCode
+  ZCode,
+  ZNote
 }
 
 const VueTiezPlugin = {
@@ -30,5 +32,6 @@ export {
   ZBadge,
   ZCheckbox,
   ZIcon,
-  ZCode
+  ZCode,
+  ZNote
 }

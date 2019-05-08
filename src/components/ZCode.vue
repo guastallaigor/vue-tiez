@@ -1,12 +1,12 @@
 <template>
-  <div class="z-code" :class="getClasses">{{ text }}</div>
+  <div class="z-code" :class="getClasses">{{ content }}</div>
 </template>
 
 <script>
 export default {
   name: 'z-code',
   props: {
-    text: {
+    content: {
       type: String,
       required: true,
       default: ''
@@ -21,7 +21,7 @@ export default {
     }
   },
   computed: {
-    getClasses() {
+    getClasses () {
       const { withDolar, dark } = this
 
       return {

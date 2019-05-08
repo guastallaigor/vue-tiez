@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
-import { withKnobs, text, radios } from '@storybook/addon-knobs'
+import { withKnobs, text, radios, boolean } from '@storybook/addon-knobs'
 
 import ZBadge from '../src/components/ZBadge.vue'
 
@@ -20,9 +20,13 @@ const zBadgeStory = storiesOf('Badge', module)
 zBadgeStory.add('Template', () => ({
   components: { ZBadge },
   props: {
-    text: {
+    content: {
       type: String,
-      default: text('Text', '10')
+      default: text('Content', '10')
+    },
+    withText: {
+      type: Boolean,
+      default: boolean('With text', false)
     },
     color: {
       type: String,
@@ -33,14 +37,18 @@ zBadgeStory.add('Template', () => ({
       }, 'black')
     }
   },
-  template: '<z-badge :text="text" :color="color" />'
+  template: '<z-badge :content="content" :color="color" :with-text="withText" />'
 }))
   .add('JSX', () => ({
     components: { ZBadge },
     props: {
-      text: {
+      content: {
         type: String,
-        default: text('Text', '10')
+        default: text('Content', '10')
+      },
+      withText: {
+        type: Boolean,
+        default: boolean('With text', false)
       },
       color: {
         type: String,
@@ -52,6 +60,6 @@ zBadgeStory.add('Template', () => ({
       }
     },
     render () {
-      return <ZBadge text={this.text} color={this.color} />
+      return <ZBadge content={this.content} color={this.color} withText={this.withText} />
     }
   }))

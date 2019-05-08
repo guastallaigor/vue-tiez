@@ -1,15 +1,19 @@
 <template>
-  <span class="z-badge" :class="color">{{ text }}</span>
+  <span class="z-badge" :class="[color, {'with-text': withText}]">{{ content }}</span>
 </template>
 
 <script>
 export default {
   name: 'z-badge',
   props: {
-    text: {
+    content: {
       type: String,
       required: true,
       default: ''
+    },
+    withText: {
+      type: Boolean,
+      default: false
     },
     color: {
       type: String,
@@ -32,6 +36,15 @@ export default {
   text-align: center;
   padding: 0px 4px;
   border-radius: 7px;
+
+  &.with-text {
+    font-weight: normal;
+    text-transform: uppercase;
+    min-height: 15px;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
 
   &.black {
     background: black;
