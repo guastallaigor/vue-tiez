@@ -45,7 +45,6 @@ export default {
     border-radius: 20px;
   }
 
-
   &.black {
     background: black;
   }
