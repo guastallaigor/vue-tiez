@@ -5,6 +5,7 @@ import ZIcon from './src/components/ZIcon.vue'
 import ZCode from './src/components/ZCode.vue'
 import ZNote from './src/components/ZNote.vue'
 import ZShowMore from './src/components/ZShowMore.vue'
+import ZSpinner from './src/components/ZSpinner.vue'
 
 // Export components
 const Components = {
@@ -14,7 +15,8 @@ const Components = {
   ZIcon,
   ZCode,
   ZNote,
-  ZShowMore
+  ZShowMore,
+  ZSpinner
 }
 
 const VueTiezPlugin = {
@@ -36,5 +38,6 @@ export {
   ZIcon,
   ZCode,
   ZNote,
-  ZShowMore
+  ZShowMore,
+  ZSpinner
 }
