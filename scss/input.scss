@@ -3,6 +3,8 @@ input {
   opacity: 0;
   position: absolute;
   width: 0px;
+  overflow: hidden;
+  margin: 0px;
   text-rendering: auto;
   color: initial;
   letter-spacing: normal;
@@ -16,4 +18,11 @@ input {
   -webkit-rtl-ordering: logical;
   writing-mode: horizontal-tb;
   -webkit-writing-mode: horizontal-tb;
+
+  &[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    background-color: initial;
+    padding: initial;
+    border: initial;
+  }
 }

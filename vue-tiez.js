@@ -7,6 +7,7 @@ import ZNote from './src/components/ZNote.vue'
 import ZShowMore from './src/components/ZShowMore.vue'
 import ZSpinner from './src/components/ZSpinner.vue'
 import ZTable from './src/components/ZTable.vue'
+import ZToggle from './src/components/ZToggle.vue'
 
 // Export components
 const Components = {
@@ -18,7 +19,8 @@ const Components = {
   ZNote,
   ZShowMore,
   ZSpinner,
-  ZTable
+  ZTable,
+  ZToggle
 }
 
 const VueTiezPlugin = {
@@ -42,5 +44,6 @@ export {
   ZNote,
   ZShowMore,
   ZSpinner,
-  ZTable
+  ZTable,
+  ZToggle
 }

@@ -77,10 +77,6 @@ export default {
 
     input[type="checkbox"] {
       margin: 3px 3px 3px 4px;
-      -webkit-appearance: checkbox;
-      background-color: initial;
-      padding: initial;
-      border: initial;
     }
 
     svg {
