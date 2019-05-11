@@ -35,6 +35,26 @@ zCodeStory.add('Template', () => ({
   },
   template: '<z-code :content="content" :dark="dark" :with-dolar="withDolar" />'
 }))
+  .add('Slot', () => ({
+    components: { ZCode },
+    props: {
+      content: {
+        type: String,
+        default: text('Content', '')
+      },
+      withDolar: {
+        type: Boolean,
+        default: boolean('With dolar', false)
+      },
+      dark: {
+        type: Boolean,
+        default: boolean('Dark', false)
+      }
+    },
+    template: `<z-code :dark="dark">
+      <span>$ npm --version</span>
+    </z-code>`
+  }))
   .add('JSX', () => ({
     components: { ZCode },
     props: {
