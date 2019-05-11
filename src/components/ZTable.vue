@@ -65,7 +65,9 @@ export default {
 
     @if ($setFlex == true) {
       flex-flow: row wrap;
-    } @else {
+    }
+
+    @else {
       font-size: 12px;
     }
   }
@@ -77,19 +79,19 @@ export default {
 }
 
 @mixin set-border-r($color) {
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0 4px 4px 0;
   border-right: 1px solid $color;
 }
 
 @mixin set-border-l($color) {
   border-left: 1px solid $color;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0 0 4px;
 }
 
 .z-table {
   border-collapse: separate;
   width: 100%;
-  border-spacing: 0px;
+  border-spacing: 0;
   border-color: grey;
   display: table;
 
@@ -97,17 +99,18 @@ export default {
     color: rgb(102, 102, 102);
     font-size: 14px;
     font-weight: 400;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     text-align: left;
     vertical-align: top;
-    padding: 0px 10px;
+    padding: 0 10px;
     background: rgb(250, 250, 250);
   }
 
-  th, td {
+  th,
+  td {
     text-align: left;
     vertical-align: top;
-    padding: 0px 10px;
+    padding: 0 10px;
   }
 
   thead {
@@ -146,10 +149,6 @@ export default {
       border-color: inherit;
     }
 
-    tr:not(:last-child) td {
-      border-bottom: 1px solid rgb(234, 234, 234);
-    }
-
     td {
       color: rgb(68, 68, 68);
       font-size: 14px;
@@ -161,6 +160,10 @@ export default {
         height: 30px;
       }
     }
+
+    tr:not(:last-child) td {
+      border-bottom: 1px solid rgb(234, 234, 234);
+    }
   }
 
   &.dark {
@@ -168,6 +171,7 @@ export default {
       th {
         color: rgb(153, 153, 153);
         background: rgb(17, 17, 17);
+
         @include set-borders-y(rgb(51, 51, 51));
       }
 
@@ -181,13 +185,9 @@ export default {
     }
 
     tbody {
-      td {
+      td { /* stylelint-disable-line */
         color: rgb(204, 204, 204);
         font-size: 14px;
-      }
-
-      tr:not(:last-child) td {
-        border-bottom: 1px solid rgb(51, 51, 51);
       }
 
       td:nth-child(1) {
@@ -196,6 +196,10 @@ export default {
 
       td:last-child {
         border-right: 1px solid transparent;
+      }
+
+      tr:not(:last-child) td {
+        border-bottom: 1px solid rgb(51, 51, 51);
       }
     }
   }

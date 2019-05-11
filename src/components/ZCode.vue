@@ -44,7 +44,7 @@ export default {
   border-style: solid;
   border-color: rgb(234, 234, 234);
   border-image: initial;
-  margin: 40px 0px;
+  margin: 40px 0;
   overflow: auto;
   padding: 20px;
 

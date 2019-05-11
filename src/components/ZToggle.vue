@@ -79,7 +79,7 @@ export default {
   position: relative;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px 0px;
+  padding: 3px 0;
 
   input[type="checkbox"] {
     cursor: default;
@@ -87,12 +87,15 @@ export default {
 
   span {
     $transition: background, border;
+
     @include set-layout(pointer, inline-block, 28px, 14px, relative, 0.2s, $transition, cubic-bezier(0, 0, 0.2, 1), 14px);
+
     transition-delay: 0.12s;
 
     div {
       @include set-layout(pointer, block, 12px, 12px, absolute, 0.28s, left, cubic-bezier(0, 0, 0.2, 1), 50%);
-      transform: translate(0px, -50%);
+
+      transform: translate(0, -50%);
       border-width: 1px;
       border-style: solid;
       border-color: transparent;
@@ -104,8 +107,9 @@ export default {
       @include set-style(rgb(204, 204, 204));
 
       div {
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
-        @include set-thumb(0px, rgb(250, 250, 250));
+        box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+
+        @include set-thumb(0, rgb(250, 250, 250));
       }
     }
 
@@ -118,29 +122,29 @@ export default {
     }
   }
 
+  &.disabled {
+    span,
+    input,
+    div { /* stylelint-disable-line */
+      cursor: not-allowed;
+    }
+  }
+
   &.dark {
     span {
       div {
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+
+        @include set-thumb(calc(14px), rgb(0, 0, 0));
       }
 
       &:not(.checked) {
         @include set-style(rgb(102, 102, 102));
 
         div {
-          @include set-thumb(0px, rgb(0, 0, 0));
+          @include set-thumb(0, rgb(0, 0, 0));
         }
       }
-
-      div {
-        @include set-thumb(calc(14px), rgb(0, 0, 0));
-      }
-    }
-  }
-
-  &.disabled {
-    span, input, div {
-      cursor: not-allowed;
     }
   }
 }

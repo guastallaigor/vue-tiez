@@ -66,7 +66,7 @@ export default {
   display: block;
 
   a {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     color: rgb(6, 125, 247);
     font-size: inherit;
     cursor: pointer;

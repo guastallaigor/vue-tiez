@@ -47,25 +47,25 @@ export default {
   }
 
   .show-more-toggle {
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0 4px 4px;
     cursor: pointer;
     font-size: 12px;
     text-transform: uppercase;
     color: rgb(102, 102, 102);
     height: 28px;
     background-color: rgb(255, 255, 255);
-    border-width: 0px;
+    border-width: 0;
     border-style: initial;
     border-color: initial;
     border-image: initial;
     padding: 5px 15px;
     border-radius: 100px;
-    outline: 0px;
+    outline: 0;
     transition: all 0.2s ease 0s;
 
     &:hover {
       color: rgb(0, 0, 0);
-      box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 9px;
+      box-shadow: rgba(0, 0, 0, 0.08) 0 5px 9px;
     }
   }
 
@@ -84,7 +84,7 @@ export default {
 
       &:hover {
         color: rgb(255, 255, 255);
-        box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 9px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0 5px 9px;
       }
     }
   }

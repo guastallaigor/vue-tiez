@@ -1,7 +1,7 @@
 {
   "hooks": {
     "pre-push": [
-      "npm run lint && npm run test:unit"
+      "npm run lint && npm run stylelint && npm run stylelint:vue && npm run test:unit"
     ]
   }
 }
