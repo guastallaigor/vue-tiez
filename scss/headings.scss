@@ -1,5 +1,5 @@
-@mixin set-heading($weight: 400, $size: 32px, $lheight: 42px, $mbs: 0.67em, $mbe: 0.67em, $mis: 0px, $mie: 0px) {
-  color: #000000;
+@mixin set-heading($weight: 400, $size: 32px, $lheight: 42px, $mbs: 0.67em, $mbe: 0.67em, $mis: 0, $mie: 0) {
+  color: #000;
   font-weight: $weight;
   font-size: $size;
 
@@ -14,7 +14,7 @@
   display: block;
 
   &.dark {
-    color: #ffffff;
+    color: #fff;
   }
 }
 

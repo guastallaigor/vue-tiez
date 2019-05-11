@@ -5,15 +5,15 @@
 }
 
 @mixin set-list($lst: none) {
-  color: #000000;
+  color: #000;
   margin-left: 15px;
-  padding: 0px;
+  padding: 0;
   display: block;
   list-style-type: none;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   padding-inline-start: 40px;
 
   @include set-dark();

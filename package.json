@@ -9,6 +9,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "prebuild:stylelint": "npm run stylelint -- --fix",
+    "stylelint": "stylelint scss/*.scss",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "test:unit": "vue-cli-service test:unit",
@@ -42,6 +44,9 @@
     "husky": "^2.2.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-scss": "^3.6.1",
     "vue-cli-plugin-storybook": "^0.6.1",
     "vue-template-compiler": "^2.6.10"
   },
@@ -82,6 +87,22 @@
         "."
       ]
     }
+  },
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "string-quotes": "double",
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    },
+    "ignoreFiles": [
+      "docs/*"
+    ]
   },
   "config": {
     "commitizen": {

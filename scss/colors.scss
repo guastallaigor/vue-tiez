@@ -59,17 +59,17 @@
   @include set-bg-and-color(#028265, #ffffff);
 }
 
-$blacks: #FAFAFA, #EAEAEA, #999999;
-$whites: #888888, #666666, #444444, #333333;
+$blacks: #fafafa, #eaeaea, #999;
+$whites: #888, #666, #444, #333;
 
 @for $i from 1 through length($blacks) {
   .grey-#{$i} {
-      @include set-bg-and-color(nth($blacks, $i), #000000);
+    @include set-bg-and-color(nth($blacks, $i), #000000);
   }
 }
 
 @for $j from 1 through length($whites) {
   .grey-#{$j + 3} {
-      @include set-bg-and-color(nth($whites, $j), #ffffff);
+    @include set-bg-and-color(nth($whites, $j), #ffffff);
   }
 }
