@@ -1,4 +1,5 @@
 <template>
+  <!-- WIP -->
   <div class="z-slider" :style="`width:${width};`">
     <div>
       <div class="rc-slider" ref="elem">
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+/* WIP */
 export default {
   name: 'z-slider',
   props: {
@@ -98,6 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
+/* WIP */
 .z-slider {
   div {
     .rc-slider {
