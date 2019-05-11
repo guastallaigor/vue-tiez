@@ -1,5 +1,7 @@
 <template>
-  <img class="z-avatar" :class="[size, {'dark': dark, 'stacked': stacked}]" :src="src" />
+  <span class="z-avatar" :class="[size, {'dark': dark, 'stacked': stacked}]">
+    <img :alt="alt" :title="alt" :src="src" />
+  </span>
 </template>
 
 <script>
@@ -9,6 +11,10 @@ export default {
     src: {
       type: String,
       required: true
+    },
+    alt: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
@@ -50,6 +56,11 @@ export default {
 
   &.large {
     @include size(90px, 90px);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 
   display: inline-flex;

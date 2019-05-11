@@ -24,6 +24,10 @@ zAvatarStory.add('Template', () => ({
       type: String,
       default: text('Image source', 'https://ik.imagekit.io/6xhf1gnexgdgk/igor2_HJhiHMa54.png')
     },
+    alt: {
+      type: String,
+      default: text('Alt', 'Photo of Igor')
+    },
     size: {
       type: String,
       default: radios('Size', {
@@ -42,7 +46,7 @@ zAvatarStory.add('Template', () => ({
       default: boolean('Stacked', false)
     }
   },
-  template: `<div><z-avatar v-for="n in 3" :key="n" :size="size" :src="src" :dark="dark" :stacked="stacked" /></div>`
+  template: `<div><z-avatar v-for="n in 3" :key="n" :size="size" :src="src" :dark="dark" :stacked="stacked" :alt="alt" /></div>`
 }))
   .add('JSX', () => ({
     components: { ZAvatar },
@@ -50,6 +54,10 @@ zAvatarStory.add('Template', () => ({
       src: {
         type: String,
         default: text('Image source', 'https://ik.imagekit.io/6xhf1gnexgdgk/igor2_HJhiHMa54.png')
+      },
+      alt: {
+        type: String,
+        default: text('Alt', 'Photo of Igor')
       },
       size: {
         type: String,
@@ -75,7 +83,7 @@ zAvatarStory.add('Template', () => ({
       const items = []
 
       for (const [index] of elements.entries()) {
-        items.push(<ZAvatar key={index} src={this.src} size={this.size} dark={this.dark} stacked={this.stacked} />)
+        items.push(<ZAvatar key={index} src={this.src} size={this.size} dark={this.dark} stacked={this.stacked} alt={this.alt} />)
       }
 
       return <div>{items}</div>
