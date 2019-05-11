@@ -1,5 +1,5 @@
 <template>
-  <table class="z-table" :class="{'dark': dark}">
+  <table class="z-table" :class="{'dark': dark}" :style="`width:${width}`">
     <thead v-if="hasItems">
       <tr>
         <th v-for="(header, keyH) in headers" :key="keyH">
@@ -10,7 +10,9 @@
     <tbody v-if="hasItems">
       <tr v-for="(item, keyV) in items" :key="keyV" aria-roledescription="row">
         <td v-for="(header, keyI) in headers" :key="keyI">
-          <z-avatar v-if="header.image && item.image" :src="item.image" :dark="dark" />
+          <div v-if="header.image && item.image">
+            <z-avatar :src="item.image" :dark="dark" />
+          </div>
           <div v-else>{{ item[header.key] }}</div>
         </td>
       </tr>
@@ -34,6 +36,10 @@ export default {
       type: Array,
       default: () => ([])
     },
+    width: {
+      type: String,
+      default: '100%'
+    },
     dark: {
       type: Boolean,
       default: false
@@ -50,6 +56,36 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin set-div($mw, $setFlex: false) {
+  div {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    min-height: $mw;
+
+    @if ($setFlex == true) {
+      flex-flow: row wrap;
+    } @else {
+      font-size: 12px;
+    }
+  }
+}
+
+@mixin set-borders-y($color) {
+  border-bottom: 1px solid $color;
+  border-top: 1px solid $color;
+}
+
+@mixin set-border-r($color) {
+  border-radius: 0px 4px 4px 0px;
+  border-right: 1px solid $color;
+}
+
+@mixin set-border-l($color) {
+  border-left: 1px solid $color;
+  border-radius: 4px 0px 0px 4px;
+}
+
 .z-table {
   border-collapse: separate;
   width: 100%;
@@ -74,50 +110,28 @@ export default {
     padding: 0px 10px;
   }
 
-  td:nth-child(1) {
-    border-left: 1px solid transparent;
-  }
-
-  td:last-child {
-    border-right: 1px solid transparent;
-  }
-
   thead {
     display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
 
+    th {
+      @include set-borders-y(rgb(234, 234, 234));
+      @include set-div(40px);
+    }
+
+    th:nth-child(1) {
+      @include set-border-l(rgb(234, 234, 234));
+    }
+
+    th:last-child {
+      @include set-border-r(rgb(234, 234, 234));
+    }
+
     tr {
       display: table-row;
       vertical-align: inherit;
       border-color: inherit;
-
-      th {
-        border-bottom: 1px solid rgb(234, 234, 234);
-        border-top: 1px solid rgb(234, 234, 234);
-
-        div {
-          -webkit-box-align: center;
-          align-items: center;
-          display: flex;
-          min-height: 40px;
-          font-size: 12px;
-        }
-      }
-
-      th:nth-child(1) {
-        border-bottom: 1px solid rgb(234, 234, 234);
-        border-left: 1px solid rgb(234, 234, 234);
-        border-radius: 4px 0px 0px 4px;
-        border-top: 1px solid rgb(234, 234, 234);
-      }
-
-      th:last-child {
-        border-bottom: 1px solid rgb(234, 234, 234);
-        border-radius: 0px 4px 4px 0px;
-        border-right: 1px solid rgb(234, 234, 234);
-        border-top: 1px solid rgb(234, 234, 234);
-      }
     }
   }
 
@@ -140,13 +154,7 @@ export default {
       color: rgb(68, 68, 68);
       font-size: 14px;
 
-      div {
-        -webkit-box-align: center;
-        align-items: center;
-        display: flex;
-        min-height: 50px;
-        flex-flow: row wrap;
-      }
+      @include set-div(50px, true);
 
       img {
         width: 30px;
@@ -156,34 +164,26 @@ export default {
   }
 
   &.dark {
-    th {
-      color: rgb(153, 153, 153);
-      background: rgb(17, 17, 17);
-      border-bottom: 1px solid rgb(51, 51, 51);
-      border-top: 1px solid rgb(51, 51, 51);
-    }
-
     thead {
-      tr {
-        th:nth-child(1) {
-          border-bottom: 1px solid rgb(51, 51, 51);
-          border-left: 1px solid rgb(51, 51, 51);
-          border-radius: 4px 0px 0px 4px;
-          border-top: 1px solid rgb(51, 51, 51);
-        }
+      th {
+        color: rgb(153, 153, 153);
+        background: rgb(17, 17, 17);
+        @include set-borders-y(rgb(51, 51, 51));
+      }
 
-        th:last-child {
-          border-bottom: 1px solid rgb(51, 51, 51);
-          border-radius: 0px 4px 4px 0px;
-          border-right: 1px solid rgb(51, 51, 51);
-          border-top: 1px solid rgb(51, 51, 51);
-        }
+      th:nth-child(1) {
+        @include set-border-l(rgb(51, 51, 51));
+      }
+
+      th:last-child {
+        @include set-border-r(rgb(51, 51, 51));
       }
     }
 
     tbody {
       td {
         color: rgb(204, 204, 204);
+        font-size: 14px;
       }
 
       tr:not(:last-child) td {
