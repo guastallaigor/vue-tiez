@@ -59,10 +59,6 @@ export default {
       type: Boolean,
       default: false
     },
-    link: {
-      type: Boolean,
-      default: false
-    },
     dark: {
       type: Boolean,
       default: false
@@ -74,7 +70,7 @@ export default {
     type: {
       type: String,
       default: 'primary',
-      validator: (v) => (['primary', 'secondary', 'warning', 'highlight'].includes(v))
+      validator: (v) => (['primary', 'secondary', 'warning', 'highlight', 'link'].includes(v))
     }
   },
   data: () => ({
@@ -89,7 +85,6 @@ export default {
         icon,
         disabled,
         abort,
-        link,
         dark,
         small,
         loading,
@@ -98,7 +93,8 @@ export default {
         primary: type === 'primary',
         secondary: type === 'secondary',
         warning: type === 'warning',
-        highlight: type === 'highlight'
+        highlight: type === 'highlight',
+        link: type === 'link'
       }
     }
   },
@@ -208,18 +204,6 @@ export default {
     &.dark {
       @include set-border-color-bg(#666, rgb(234, 234, 234), #000);
     }
-
-    /* .icon {
-      &:global(path) {
-        fill: #999;
-      }
-    }
-
-    &.disabled .icon {
-      &:global(path) {
-        fill: #ccc;
-      }
-    } */
 
     &:hover:not(.shadow),
     &.active:not(.shadow) {
@@ -371,10 +355,14 @@ export default {
   &.link {
     @include set-link();
 
-    &:hover {
-      text-decoration: underline;
+    &.disabled {
+      color: #ccc;
+    }
 
+    &:hover {
       @include set-link();
+
+      text-decoration: underline;
 
       &:not(.disabled) {
         color: #0d7df7;

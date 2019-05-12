@@ -52,10 +52,6 @@ zButtonStory.add('Template', () => ({
       type: Boolean,
       default: boolean('Abort', false)
     },
-    link: {
-      type: Boolean,
-      default: boolean('Link', false)
-    },
     dark: {
       type: Boolean,
       default: boolean('Dark', false)
@@ -74,7 +70,8 @@ zButtonStory.add('Template', () => ({
         primary: 'primary',
         secondary: 'secondary',
         warning: 'warning',
-        highlight: 'highlight'
+        highlight: 'highlight',
+        link: 'link'
       }, 'primary')
     }
   },
@@ -88,7 +85,6 @@ zButtonStory.add('Template', () => ({
     :abort="abort"
     :shadow="shadow"
     :active="active"
-    :link="link"
     :dark="dark"
     :type="type"
     @click="click"
@@ -128,10 +124,6 @@ zButtonStory.add('Template', () => ({
         type: Boolean,
         default: boolean('Abort', false)
       },
-      link: {
-        type: Boolean,
-        default: boolean('Link', false)
-      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
@@ -150,7 +142,8 @@ zButtonStory.add('Template', () => ({
           primary: 'primary',
           secondary: 'secondary',
           warning: 'warning',
-          highlight: 'highlight'
+          highlight: 'highlight',
+          link: 'link'
         }, 'primary')
       }
     },
@@ -163,7 +156,6 @@ zButtonStory.add('Template', () => ({
       :abort="abort"
       :shadow="shadow"
       :active="active"
-      :link="link"
       :dark="dark"
       :type="type"
       @click="click">
@@ -204,10 +196,6 @@ zButtonStory.add('Template', () => ({
         type: Boolean,
         default: boolean('Abort', false)
       },
-      link: {
-        type: Boolean,
-        default: boolean('Link', false)
-      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
@@ -226,7 +214,8 @@ zButtonStory.add('Template', () => ({
           primary: 'primary',
           secondary: 'secondary',
           warning: 'warning',
-          highlight: 'highlight'
+          highlight: 'highlight',
+          link: 'link'
         }, 'primary')
       }
     },
@@ -241,7 +230,6 @@ zButtonStory.add('Template', () => ({
         abort={this.abort}
         shadow={this.shadow}
         active={this.active}
-        link={this.link}
         dark={this.dark}
         type={this.type}
         onClick={this.click}
