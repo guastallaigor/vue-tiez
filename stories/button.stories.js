@@ -98,7 +98,7 @@ zButtonStory.add('Template', () => ({
     props: {
       content: {
         type: String,
-        default: text('Content', 'Action')
+        default: text('Content', '')
       },
       icon: {
         type: String,
