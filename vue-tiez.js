@@ -1,8 +1,10 @@
 import ZAvatar from './src/components/ZAvatar.vue'
 import ZBadge from './src/components/ZBadge.vue'
+import ZButton from './src/components/ZButton.vue'
 import ZCheckbox from './src/components/ZCheckbox.vue'
-import ZIcon from './src/components/ZIcon.vue'
 import ZCode from './src/components/ZCode.vue'
+import ZIcon from './src/components/ZIcon.vue'
+import ZInput from './src/components/ZInput.vue'
 import ZNote from './src/components/ZNote.vue'
 import ZShowMore from './src/components/ZShowMore.vue'
 import ZSpinner from './src/components/ZSpinner.vue'
@@ -13,9 +15,11 @@ import ZToggle from './src/components/ZToggle.vue'
 const Components = {
   ZAvatar,
   ZBadge,
+  ZButton,
   ZCheckbox,
-  ZIcon,
   ZCode,
+  ZIcon,
+  ZInput,
   ZNote,
   ZShowMore,
   ZSpinner,
@@ -38,9 +42,11 @@ export default VueTiezPlugin
 export {
   ZAvatar,
   ZBadge,
+  ZButton,
   ZCheckbox,
-  ZIcon,
   ZCode,
+  ZIcon,
+  ZInput,
   ZNote,
   ZShowMore,
   ZSpinner,
