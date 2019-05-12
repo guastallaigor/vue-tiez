@@ -35,6 +35,16 @@ export default {
 
 <style lang="scss">
 .z-spinner {
+  @keyframes spin {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.15;
+    }
+  }
+
   height: 20px;
   width: 20px;
 
@@ -65,16 +75,6 @@ export default {
 
   &.dark .spinner_bar {
     background-color: rgb(234, 234, 234);
-  }
-}
-
-@keyframes spin {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.15;
   }
 }
 </style>

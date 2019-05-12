@@ -71,7 +71,7 @@
   "main": "./vue-tiez.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com:guastallaigor/vue-tiez.git"
+    "url": "https://github.com/guastallaigor/vue-tiez.git"
   },
   "commitlint": {
     "extends": [
