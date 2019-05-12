@@ -270,7 +270,8 @@ export default {
 
     @include set-color-bg(#000, #fff);
 
-    &.disabled, &.disabled:hover:not(.shadow) {
+    &.disabled,
+    &.disabled:hover:not(.shadow) {
       @include set-border-color-bg(#333, #333, #111);
     }
 
@@ -328,6 +329,7 @@ export default {
 
   &.abort {
     border: 0;
+
     @include set-bordercolor-color-bg(transparent, #666, transparent, false);
 
     &.disabled {
