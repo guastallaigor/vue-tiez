@@ -17,7 +17,8 @@ export default {
     },
     type: {
       type: String,
-      default: ''
+      default: '',
+      validator: (v) => (['', 'hint', 'alert', 'warning'].includes(v))
     },
     customLabel: {
       type: String,

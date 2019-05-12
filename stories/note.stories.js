@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
-import { withKnobs, text, boolean } from '@storybook/addon-knobs'
+import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
 
 import ZNote from '../src/components/ZNote.vue'
 
@@ -26,7 +26,12 @@ zNoteStory.add('Template', () => ({
     },
     type: {
       type: String,
-      default: text('Type', 'hint')
+      default: radios('Type', {
+        hint: 'hint',
+        default: '',
+        alert: 'alert',
+        warning: 'warning'
+      }, 'hint')
     },
     customLabel: {
       type: String,
@@ -48,7 +53,12 @@ zNoteStory.add('Template', () => ({
       },
       type: {
         type: String,
-        default: text('Type', 'hint')
+        default: radios('Type', {
+          hint: 'hint',
+          default: '',
+          alert: 'alert',
+          warning: 'warning'
+        }, 'hint')
       },
       customLabel: {
         type: String,
@@ -72,7 +82,12 @@ zNoteStory.add('Template', () => ({
       },
       type: {
         type: String,
-        default: text('Type', 'hint')
+        default: radios('Type', {
+          hint: 'hint',
+          default: '',
+          alert: 'alert',
+          warning: 'warning'
+        }, 'hint')
       },
       customLabel: {
         type: String,
