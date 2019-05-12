@@ -10,7 +10,7 @@
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g fill="#ddd">
+        <g :fill="dark ? '#333' : '#ddd'">
           <rect width="100%" height="100%" rx="10" />
         </g>
       </g>
@@ -81,10 +81,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-
-    &.dark g g {
-      fill: #333;
-    }
   }
 
   svg {

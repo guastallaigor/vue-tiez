@@ -48,10 +48,6 @@ zButtonStory.add('Template', () => ({
       type: Boolean,
       default: boolean('Loading', false)
     },
-    abort: {
-      type: Boolean,
-      default: boolean('Abort', false)
-    },
     dark: {
       type: Boolean,
       default: boolean('Dark', false)
@@ -71,7 +67,8 @@ zButtonStory.add('Template', () => ({
         secondary: 'secondary',
         warning: 'warning',
         highlight: 'highlight',
-        link: 'link'
+        link: 'link',
+        abort: 'abort'
       }, 'primary')
     }
   },
@@ -82,7 +79,6 @@ zButtonStory.add('Template', () => ({
     :disabled="disabled"
     :small="small"
     :loading="loading"
-    :abort="abort"
     :shadow="shadow"
     :active="active"
     :dark="dark"
@@ -120,10 +116,6 @@ zButtonStory.add('Template', () => ({
         type: Boolean,
         default: boolean('Loading', false)
       },
-      abort: {
-        type: Boolean,
-        default: boolean('Abort', false)
-      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
@@ -143,7 +135,8 @@ zButtonStory.add('Template', () => ({
           secondary: 'secondary',
           warning: 'warning',
           highlight: 'highlight',
-          link: 'link'
+          link: 'link',
+          abort: 'abort'
         }, 'primary')
       }
     },
@@ -153,7 +146,6 @@ zButtonStory.add('Template', () => ({
       :disabled="disabled"
       :small="small"
       :loading="loading"
-      :abort="abort"
       :shadow="shadow"
       :active="active"
       :dark="dark"
@@ -192,10 +184,6 @@ zButtonStory.add('Template', () => ({
         type: Boolean,
         default: boolean('Loading', false)
       },
-      abort: {
-        type: Boolean,
-        default: boolean('Abort', false)
-      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
@@ -215,7 +203,8 @@ zButtonStory.add('Template', () => ({
           secondary: 'secondary',
           warning: 'warning',
           highlight: 'highlight',
-          link: 'link'
+          link: 'link',
+          abort: 'abort'
         }, 'primary')
       }
     },

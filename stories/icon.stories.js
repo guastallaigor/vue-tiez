@@ -23,26 +23,27 @@ zIconStory.add('Template', () => ({
     name: {
       type: String,
       default: radios('Name', {
-        'add': 'add',
-        'arrow': 'arrow',
+        add: 'add',
+        arrow: 'arrow',
         'arrow-double': 'arrow-double',
-        'up': 'up',
-        'down': 'down',
-        'left': 'left',
-        'right': 'right',
-        'camera': 'camera',
+        up: 'up',
+        down: 'down',
+        left: 'left',
+        right: 'right',
+        camera: 'camera',
         'big-camera': 'big-camera',
-        'checked': 'checked',
-        'unchecked': 'unchecked',
-        'checkmark': 'checkmark',
-        'cloud': 'cloud',
-        'configuration': 'configuration',
-        'copy': 'copy',
+        checked: 'checked',
+        unchecked: 'unchecked',
+        checkmark: 'checkmark',
+        cloud: 'cloud',
+        configuration: 'configuration',
+        copy: 'copy',
         'credit-card': 'credit-card',
-        'delete': 'delete',
-        'directory': 'directory',
-        'close': 'close',
-        'open': 'open'
+        delete: 'delete',
+        directory: 'directory',
+        close: 'close',
+        open: 'open',
+        github: 'github'
       }, 'add')
     },
     size: {
@@ -52,7 +53,57 @@ zIconStory.add('Template', () => ({
     dark: {
       type: Boolean,
       default: boolean('Dark', false)
+    },
+    color: {
+      type: String,
+      default: text('Color', '')
     }
   },
-  template: '<z-icon :name="name" :size="size" :dark="dark" />'
+  template: '<z-icon :name="name" :size="size" :dark="dark" :color="color" />'
 }))
+  .add('JSX', () => ({
+    components: { ZIcon },
+    props: {
+      name: {
+        type: String,
+        default: radios('Name', {
+          add: 'add',
+          arrow: 'arrow',
+          'arrow-double': 'arrow-double',
+          up: 'up',
+          down: 'down',
+          left: 'left',
+          right: 'right',
+          camera: 'camera',
+          'big-camera': 'big-camera',
+          checked: 'checked',
+          unchecked: 'unchecked',
+          checkmark: 'checkmark',
+          cloud: 'cloud',
+          configuration: 'configuration',
+          copy: 'copy',
+          'credit-card': 'credit-card',
+          delete: 'delete',
+          directory: 'directory',
+          close: 'close',
+          open: 'open',
+          github: 'github'
+        }, 'add')
+      },
+      size: {
+        type: String,
+        default: text('Size', '20px')
+      },
+      dark: {
+        type: Boolean,
+        default: boolean('Dark', false)
+      },
+      color: {
+        type: String,
+        default: text('Color', '')
+      }
+    },
+    render () {
+      return <ZIcon name={this.name} size={this.size} dark={this.dark} color={this.color} />
+    }
+  }))

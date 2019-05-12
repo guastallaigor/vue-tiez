@@ -1,21 +1,30 @@
 <template>
-  <button role="button" type="button" class="z-button" @click="onClick" :class="getClasses" ref="button">
-    <span class="loading-shim" v-if="loading">
+  <button
+    role="button"
+    type="button"
+    class="z-button"
+    @click="onClick"
+    :class="getClasses"
+    ref="button"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+  >
+    <span v-if="loading" class="loading-shim">
       <span class="loading">
         <span></span>
         <span></span>
         <span></span>
       </span>
     </span>
-    <span class="icon" :class="{'right': withIconRight}" v-if="icon && !loading && !withIconRight">
-      <z-icon :name="icon" :dark="dark" />
+    <span v-if="icon && !loading && !withIconRight" class="icon" :class="{'right': withIconRight}">
+      <z-icon :name="icon" :color="getIconColor" />
     </span>
     <span v-if="content && !loading">{{ content }}</span>
     <slot v-if="!content && !loading" />
-    <span class="icon" :class="{'right': withIconRight}" v-if="icon && !loading && withIconRight">
-      <z-icon :name="icon" :dark="dark" />
+    <span v-if="icon && !loading && withIconRight" class="icon" :class="{'right': withIconRight}">
+      <z-icon :name="icon" :color="getIconColor" />
     </span>
-    <z-animation v-if="x && y" :dark="dark" :y="y" :x="x" @complete="onAnimationComplete" />
+    <z-animation v-if="x && y && !shadow" :dark="dark" :y="y" :x="x" @complete="onAnimationComplete" />
   </button>
 </template>
 
@@ -51,10 +60,6 @@ export default {
       type: Boolean,
       default: false
     },
-    abort: {
-      type: Boolean,
-      default: false
-    },
     active: {
       type: Boolean,
       default: false
@@ -70,21 +75,21 @@ export default {
     type: {
       type: String,
       default: 'primary',
-      validator: (v) => (['primary', 'secondary', 'warning', 'highlight', 'link'].includes(v))
+      validator: (v) => (['primary', 'secondary', 'warning', 'highlight', 'link', 'abort'].includes(v))
     }
   },
   data: () => ({
     x: null,
-    y: null
+    y: null,
+    hover: false
   }),
   computed: {
     getClasses () {
-      const { icon, disabled, abort, link, dark, type, small, loading, shadow, active } = this
+      const { icon, disabled, dark, type, small, loading, shadow, active } = this
 
       return {
         icon,
         disabled,
-        abort,
         dark,
         small,
         loading,
@@ -94,12 +99,27 @@ export default {
         secondary: type === 'secondary',
         warning: type === 'warning',
         highlight: type === 'highlight',
-        link: type === 'link'
+        link: type === 'link',
+        abort: type === 'abort'
       }
+    },
+    getIconColor () {
+      const { type, hover } = this
+
+      return {
+        primary: hover ? '#000' : '#fff',
+        secondary: hover ? '#000' : 'rgb(102, 102, 102)',
+        warning: hover ? '#eb5757' : '#fff',
+        highlight: hover ? '#007aff' : '#fff',
+        link: '#0d7df7',
+        abort: '#666'
+      }[type]
     }
   },
   methods: {
     onClick (event) {
+      if (this.disabled) return
+
       const rect = this.$refs.button.getBoundingClientRect()
 
       if (rect) {
@@ -143,10 +163,10 @@ export default {
   @include set-color-bg($color, $bg, $isbg);
 }
 
-@mixin set-link() {
+@mixin set-link($color: #0d7df7) {
   border: 0;
   background: transparent;
-  color: #0d7df7;
+  color: $color;
   padding: 0;
   box-shadow: none;
 }
@@ -203,11 +223,21 @@ export default {
 
     &.dark {
       @include set-border-color-bg(#666, rgb(234, 234, 234), #000);
+
+      &:hover:not(.shadow) {
+        @include set-border-color-bg(#fff, rgb(0, 0, 0), #fff);
+      }
     }
 
     &:hover:not(.shadow),
     &.active:not(.shadow) {
       @include set-bordercolor-color-bg(rgb(102, 102, 102), rgb(102, 102, 102), #fff);
+    }
+
+    &.disabled {
+      &:hover {
+        @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa, false);
+      }
     }
   }
 
@@ -240,17 +270,17 @@ export default {
 
     @include set-color-bg(#000, #fff);
 
-    &.disabled {
+    &.disabled, &.disabled:hover:not(.shadow) {
       @include set-border-color-bg(#333, #333, #111);
     }
 
-    &:hover,
+    &:hover:not(.shadow),
     &.active {
       @include set-border-color-bg(#fff, #fff, rgb(0, 0, 0));
     }
 
-    .loading {
-      @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa, false);
+    &.loading {
+      @include set-bordercolor-color-bg(rgb(234, 234, 234), rgb(204, 204, 204), rgb(250, 250, 250));
     }
   }
 
@@ -297,10 +327,15 @@ export default {
   }
 
   &.abort {
+    border: 0;
     @include set-bordercolor-color-bg(transparent, #666, transparent, false);
 
     &.disabled {
       color: #ccc;
+    }
+
+    &:hover:not(.shadow) {
+      @include set-link(#666);
     }
   }
 
@@ -329,6 +364,12 @@ export default {
 
   &.disabled {
     @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa);
+
+    &:hover:not(.shadow) {
+      &:not(.link):not(.dark) {
+        @include set-border-color-bg(#eaeaea, #ccc, #fafafa);
+      }
+    }
 
     cursor: not-allowed;
   }
@@ -359,7 +400,7 @@ export default {
       color: #ccc;
     }
 
-    &:hover {
+    &:hover:not(.shadow) {
       @include set-link();
 
       text-decoration: underline;

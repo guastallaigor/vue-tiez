@@ -1,5 +1,5 @@
 <template>
-  <component :is="name" :size="size" :dark="dark"/>
+  <component :is="name" :size="size" :dark="dark" :color="color" />
 </template>
 
 <script>
@@ -25,7 +25,8 @@ export default {
     delete: () => import('./icons/delete'),
     directory: () => import('./icons/directory'),
     close: () => import('./icons/close'),
-    open: () => import('./icons/open')
+    open: () => import('./icons/open'),
+    github: () => import('./icons/github')
   },
   props: {
     name: {
@@ -39,6 +40,10 @@ export default {
     dark: {
       type: Boolean,
       default: false
+    },
+    color: {
+      type: String,
+      default: ''
     }
   }
 }
