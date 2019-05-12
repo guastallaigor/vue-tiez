@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
-import { withKnobs, text, boolean, radios } from '@storybook/addon-knobs'
+import { withKnobs, text, boolean, radios, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import ZButton from '../src/components/ZButton.vue'
+import iconObj from '../config/storybook/assets/icon-obj'
 
 const zButtonStory = storiesOf('Button', module)
   .addParameters({ backgrounds: [
@@ -30,7 +31,7 @@ zButtonStory.add('Template', () => ({
     },
     icon: {
       type: String,
-      default: text('Icon', '')
+      default: select('Icon', iconObj, '')
     },
     withIconRight: {
       type: Boolean,
@@ -98,7 +99,7 @@ zButtonStory.add('Template', () => ({
       },
       icon: {
         type: String,
-        default: text('Icon', '')
+        default: select('Icon', iconObj, '')
       },
       withIconRight: {
         type: Boolean,
@@ -166,7 +167,7 @@ zButtonStory.add('Template', () => ({
       },
       icon: {
         type: String,
-        default: text('Icon', '')
+        default: select('Icon', iconObj, '')
       },
       withIconRight: {
         type: Boolean,

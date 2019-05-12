@@ -1,8 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
-import { withKnobs, boolean, radios, text } from '@storybook/addon-knobs'
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs'
 
 import ZIcon from '../src/components/ZIcon.vue'
+import iconObj from '../config/storybook/assets/icon-obj'
 
 const zIconStory = storiesOf('Icon', module)
   .addParameters({ backgrounds: [
@@ -22,29 +23,7 @@ zIconStory.add('Template', () => ({
   props: {
     name: {
       type: String,
-      default: radios('Name', {
-        add: 'add',
-        arrow: 'arrow',
-        'arrow-double': 'arrow-double',
-        up: 'up',
-        down: 'down',
-        left: 'left',
-        right: 'right',
-        camera: 'camera',
-        'big-camera': 'big-camera',
-        checked: 'checked',
-        unchecked: 'unchecked',
-        checkmark: 'checkmark',
-        cloud: 'cloud',
-        configuration: 'configuration',
-        copy: 'copy',
-        'credit-card': 'credit-card',
-        delete: 'delete',
-        directory: 'directory',
-        close: 'close',
-        open: 'open',
-        github: 'github'
-      }, 'add')
+      default: select('Name', iconObj, 'add')
     },
     size: {
       type: String,
@@ -66,29 +45,7 @@ zIconStory.add('Template', () => ({
     props: {
       name: {
         type: String,
-        default: radios('Name', {
-          add: 'add',
-          arrow: 'arrow',
-          'arrow-double': 'arrow-double',
-          up: 'up',
-          down: 'down',
-          left: 'left',
-          right: 'right',
-          camera: 'camera',
-          'big-camera': 'big-camera',
-          checked: 'checked',
-          unchecked: 'unchecked',
-          checkmark: 'checkmark',
-          cloud: 'cloud',
-          configuration: 'configuration',
-          copy: 'copy',
-          'credit-card': 'credit-card',
-          delete: 'delete',
-          directory: 'directory',
-          close: 'close',
-          open: 'open',
-          github: 'github'
-        }, 'add')
+        default: select('Name', iconObj, 'add')
       },
       size: {
         type: String,
