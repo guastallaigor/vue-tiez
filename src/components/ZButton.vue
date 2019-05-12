@@ -1,5 +1,5 @@
 <template>
-  <button role="button" type="button" class="z-button" @click="$emit('click', $event)" :class="getClasses">
+  <button role="button" type="button" class="z-button" @click="onClick" :class="getClasses" ref="button">
     <span class="loading-shim" v-if="loading">
       <span class="loading">
         <span></span>
@@ -15,6 +15,7 @@
     <span class="icon" :class="{'right': withIconRight}" v-if="icon && !loading && withIconRight">
       <z-icon :name="icon" :dark="dark" />
     </span>
+    <z-animation v-if="x && y" :dark="dark" :y="y" :x="x" @complete="onAnimationComplete" />
   </button>
 </template>
 
@@ -22,7 +23,8 @@
 export default {
   name: 'z-button',
   components: {
-    ZIcon: () => import('./ZIcon')
+    ZIcon: () => import('./ZIcon'),
+    ZAnimation: () => import('./ZAnimation')
   },
   props: {
     content: {
@@ -53,6 +55,10 @@ export default {
       type: Boolean,
       default: false
     },
+    active: {
+      type: Boolean,
+      default: false
+    },
     link: {
       type: Boolean,
       default: false
@@ -71,9 +77,13 @@ export default {
       validator: (v) => (['primary', 'secondary', 'warning', 'highlight'].includes(v))
     }
   },
+  data: () => ({
+    x: null,
+    y: null
+  }),
   computed: {
     getClasses () {
-      const { icon, disabled, abort, link, dark, type, small, loading, shadow } = this
+      const { icon, disabled, abort, link, dark, type, small, loading, shadow, active } = this
 
       return {
         icon,
@@ -84,11 +94,29 @@ export default {
         small,
         loading,
         shadow,
+        active,
         primary: type === 'primary',
         secondary: type === 'secondary',
         warning: type === 'warning',
         highlight: type === 'highlight'
       }
+    }
+  },
+  methods: {
+    onClick (event) {
+      const rect = this.$refs.button.getBoundingClientRect()
+
+      if (rect) {
+        const { left, top } = rect
+        this.x = event.clientX - left
+        this.y = event.clientY - top
+      }
+
+      this.$emit('click', event)
+    },
+    onAnimationComplete () {
+      this.x = null
+      this.y = null
     }
   }
 }
@@ -100,7 +128,9 @@ export default {
 
   @if ($isbg == true) {
     background: $bg;
-  } @else {
+  }
+
+  @else {
     background-color: $bg;
   }
 }
@@ -117,14 +147,24 @@ export default {
   @include set-color-bg($color, $bg, $isbg);
 }
 
+@mixin set-link() {
+  border: 0;
+  background: transparent;
+  color: #0d7df7;
+  padding: 0;
+  box-shadow: none;
+}
+
 .z-button {
   @keyframes hasloading {
     0% {
       opacity: 0.2;
     }
+
     20% {
       opacity: 1;
     }
+
     100% {
       opacity: 0.2;
     }
@@ -162,28 +202,28 @@ export default {
 
   &.secondary {
     @include set-border-color-bg(#eaeaea, rgb(102, 102, 102), #fff);
+
     border-color: rgb(234, 234, 234);
 
     &.dark {
       @include set-border-color-bg(#666, rgb(234, 234, 234), #000);
     }
 
-    .icon :global(path) {
-      fill: #999;
+    /* .icon {
+      &:global(path) {
+        fill: #999;
+      }
     }
-    .button.disabled .icon :global(path) {
-      fill: #ccc;
-    }
+
+    &.disabled .icon {
+      &:global(path) {
+        fill: #ccc;
+      }
+    } */
 
     &:hover:not(.shadow),
     &.active:not(.shadow) {
       @include set-bordercolor-color-bg(rgb(102, 102, 102), rgb(102, 102, 102), #fff);
-    }
-
-    &.not-disabled:hover :global(path),
-    &.not-disabled.active :global(path) {
-      fill: currentColor;
-      stroke: none;
     }
   }
 
@@ -211,9 +251,29 @@ export default {
     position: relative;
   }
 
+  &.dark {
+    border: 2px solid #fff;
+
+    @include set-color-bg(#000, #fff);
+
+    &.disabled {
+      @include set-border-color-bg(#333, #333, #111);
+    }
+
+    &:hover,
+    &.active {
+      @include set-border-color-bg(#fff, #fff, rgb(0, 0, 0));
+    }
+
+    .loading {
+      @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa, false);
+    }
+  }
+
   &.loading {
-    pointer-events: none;
     @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa);
+
+    pointer-events: none;
     position: relative;
     cursor: default;
 
@@ -235,7 +295,7 @@ export default {
           width: 4px;
           height: 4px;
           border-radius: 50%;
-          background-color: #444444;
+          background-color: #444;
           display: inline-block;
           margin: 0 1px;
           animation-duration: 1.4s;
@@ -254,6 +314,7 @@ export default {
 
   &.abort {
     @include set-bordercolor-color-bg(transparent, #666, transparent, false);
+
     &.disabled {
       color: #ccc;
     }
@@ -264,18 +325,12 @@ export default {
     @include set-border-color-bg();
   }
 
-  &.not-disabled:hover :global(path),
-  &.not-disabled.active :global(path) {
-    fill: rgb(0, 0, 0);
-    stroke: rgb(0, 0, 0);
-  }
-
   &.warning {
     @include set-bordercolor-color-bg(#eb5757, #fff, #eb5757, false);
 
     &:hover:not(.shadow),
     &.active:not(.shadow) {
-      @include set-color-bg(#eb5757, #fff);
+      @include set-border-color-bg(#eb5757, #eb5757, #fff);
     }
   }
 
@@ -284,31 +339,14 @@ export default {
 
     &:hover:not(.shadow),
     &.active:not(.shadow) {
-      @include set-color-bg(#007aff, #fff);
+      @include set-border-color-bg(#007aff, #007aff, #fff);
     }
   }
 
   &.disabled {
     @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa);
+
     cursor: not-allowed;
-  }
-
-  &.dark {
-    border: 2px solid #fff;
-    @include set-color-bg(#000, #fff);
-
-    &.disabled {
-      @include set-border-color-bg(#333, #333, #111);
-    }
-
-    &:hover,
-    &.active {
-      @include set-border-color-bg(#fff, #fff, rgb(0, 0, 0));
-    }
-
-    .loading {
-      @include set-bordercolor-color-bg(#eaeaea, #ccc, #fafafa, false);
-    }
   }
 
   &.small {
@@ -322,14 +360,33 @@ export default {
     font-weight: 400;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
 
-    &:not(&.disabled) {
+    &:not(.disabled) {
       &:hover {
         box-shadow: 0 7px 20px rgba(0, 0, 0, 0.16);
-        transform: translate3d(0px,-1px,0px);
+        transform: translate3d(0, -1px, 0);
+      }
+    }
+  }
+
+  &.link {
+    @include set-link();
+
+    &:hover {
+      text-decoration: underline;
+
+      @include set-link();
+
+      &:not(.disabled) {
+        color: #0d7df7;
+      }
+
+      &.disabled {
+        color: #ccc;
       }
     }
   }
 }
+
 /*
 .button.icon--push:not(.icon--right) {
   padding-left: 42px;
@@ -337,8 +394,5 @@ export default {
 .button.icon--right.icon--push {
   padding-right: 42px;
 }
-.button.secondary.icon--right .icon {
-  right: 8px;
-  left: auto;
-} */
+*/
 </style>
