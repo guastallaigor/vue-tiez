@@ -1,0 +1,3 @@
+<template functional>
+  <svg :width="props.size || '20px'" :height="props.size || '20px'" viewBox="0 0 40 40" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="specturm"><path d="M0 17c0 2 1 3 3 3h3c8 0 14 6 14 14v3c0 2 1 3 3 3h14c2 0 3-1 3-3v-3C40 15 25 0 6 0H3C1 0 0 1 0 3v14z" :fill="props.dark ? '#fff' : (props.color || '#000')" fill-rule="nonzero"></path></svg>
+</template>
