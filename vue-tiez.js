@@ -3,6 +3,7 @@ import ZBadge from './src/components/ZBadge.vue'
 import ZButton from './src/components/ZButton.vue'
 import ZCheckbox from './src/components/ZCheckbox.vue'
 import ZCode from './src/components/ZCode.vue'
+import ZCollapse from './src/components/ZCollapse.vue'
 import ZIcon from './src/components/ZIcon.vue'
 import ZInput from './src/components/ZInput.vue'
 import ZNote from './src/components/ZNote.vue'
@@ -24,7 +25,8 @@ const Components = {
   ZShowMore,
   ZSpinner,
   ZTable,
-  ZToggle
+  ZToggle,
+  ZCollapse
 }
 
 const VueTiezPlugin = {
@@ -51,5 +53,6 @@ export {
   ZShowMore,
   ZSpinner,
   ZTable,
-  ZToggle
+  ZToggle,
+  ZCollapse
 }
