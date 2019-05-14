@@ -102,13 +102,13 @@ export default {
       text-transform: none;
       color: rgb(0, 0, 0);
       cursor: pointer;
-      outline-width: 0px;
-      margin: 0px;
+      outline-width: 0;
+      margin: 0;
 
       > span:first-child {
         margin-right: 1em;
         line-height: 1.35em;
-        padding: 15px 0px;
+        padding: 15px 0;
       }
     }
 
@@ -130,7 +130,8 @@ export default {
     }
 
     &.dark {
-      h3, div p {
+      h3,
+      div p {
         color: rgb(255, 255, 255);
       }
     }
