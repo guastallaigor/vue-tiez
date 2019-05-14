@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue'
-import { withKnobs, text, boolean } from '@storybook/addon-knobs'
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import ZInput from '../src/components/ZInput.vue'
+import iconObj from '../config/storybook/assets/icon-obj'
 
 const zInputStory = storiesOf('Input', module)
   .addParameters({ backgrounds: [
@@ -47,7 +48,7 @@ zInputStory.add('Template', () => ({
     },
     icon: {
       type: String,
-      default: text('Icon', '')
+      default: select('Icon', iconObj, null)
     },
     placeholder: {
       type: String,
@@ -110,7 +111,7 @@ zInputStory.add('Template', () => ({
       },
       icon: {
         type: String,
-        default: text('Icon', '')
+        default: select('Icon', iconObj, null)
       },
       placeholder: {
         type: String,

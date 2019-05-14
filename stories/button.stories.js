@@ -31,7 +31,7 @@ zButtonStory.add('Template', () => ({
     },
     icon: {
       type: String,
-      default: select('Icon', iconObj, '')
+      default: select('Icon', iconObj, null)
     },
     withIconRight: {
       type: Boolean,
@@ -99,7 +99,7 @@ zButtonStory.add('Template', () => ({
       },
       icon: {
         type: String,
-        default: select('Icon', iconObj, '')
+        default: select('Icon', iconObj, null)
       },
       withIconRight: {
         type: Boolean,
@@ -167,7 +167,7 @@ zButtonStory.add('Template', () => ({
       },
       icon: {
         type: String,
-        default: select('Icon', iconObj, '')
+        default: select('Icon', iconObj, null)
       },
       withIconRight: {
         type: Boolean,
