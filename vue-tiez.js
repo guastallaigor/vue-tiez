@@ -11,6 +11,7 @@ import ZShowMore from './src/components/ZShowMore.vue'
 import ZSpinner from './src/components/ZSpinner.vue'
 import ZTable from './src/components/ZTable.vue'
 import ZToggle from './src/components/ZToggle.vue'
+import ZVideoCard from './src/components/ZVideoCard.vue'
 
 // Export components
 const Components = {
@@ -26,7 +27,8 @@ const Components = {
   ZSpinner,
   ZTable,
   ZToggle,
-  ZCollapse
+  ZCollapse,
+  ZVideoCard
 }
 
 const VueTiezPlugin = {
@@ -54,5 +56,6 @@ export {
   ZSpinner,
   ZTable,
   ZToggle,
-  ZCollapse
+  ZCollapse,
+  ZVideoCard
 }
