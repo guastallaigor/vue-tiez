@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZAvatar component should match snapshot 1`] = `<span class="z-avatar"><img alt="Photo of Igor" title="Photo of Igor" src="https://ik.imagekit.io/6xhf1gnexgdgk/igor2_HJhiHMa54.png"></span>`;

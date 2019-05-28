@@ -28,10 +28,6 @@ export default {
     stacked: {
       type: Boolean,
       default: false
-    },
-    show: {
-      type: Number,
-      default: 0
     }
   }
 }

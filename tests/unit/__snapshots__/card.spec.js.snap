@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZCard component should match snapshot 1`] = `<div class="z-card" style="width: auto;">ZCard</div>`;
