@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZVideoCard component should match snapshot 1`] = `
+<div class="z-video-card" style="width: 500px;">
+  <div>
+    <main>
+      <div class="image">
+        <figure>
+          <main>
+            <div class="container"><img src="https://image.mux.com/R6cYGw4NLjuquRZsxBuyXyzNLmIyZQjZ/thumbnail.jpg?time=15&amp;width=430&amp;height=240&amp;smart_crop=true" alt="Title"></div>
+          </main>
+        </figure>
+      </div>
+      <div class="play-icon"><svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="play">
+          <path d="M23 14.875L0.5 29.4892L0.5 0.260821L23 14.875Z" fill="#fff"></path>
+        </svg></div>
+    </main>
+  </div>
+  <div class="details">
+    <h4 title="Title">Title</h4>
+    <p>Subtitle</p>
+  </div>
+</div>
+`;
