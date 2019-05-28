@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'dark': dark}" ref="animation" class="z-animation">
+  <div :class="{ dark }" ref="animation" class="z-animation">
     <svg
       :style="{ top: y - 10, left: x - 10 }"
       width="20"

@@ -1,5 +1,5 @@
 <template>
-  <span class="z-avatar" :class="[size, {'dark': dark, 'stacked': stacked}]">
+  <span class="z-avatar" :class="[size, { dark, stacked }]">
     <img :alt="alt" :title="alt" :src="src" />
   </span>
 </template>

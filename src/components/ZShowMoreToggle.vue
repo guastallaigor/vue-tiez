@@ -1,5 +1,5 @@
 <template>
-  <div class="z-show-more-toggle" :class="{'dark': dark}">
+  <div class="z-show-more-toggle" :class="{ dark }">
     <div class="line"></div>
     <button @click="$emit('click')" class="show-more-toggle">{{ more ? 'Show More' : 'Show Less' }}
       <svg width="13px" height="6px" viewBox="0 0 19 10" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">

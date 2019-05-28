@@ -1,6 +1,7 @@
 import ZAvatar from './src/components/ZAvatar.vue'
 import ZBadge from './src/components/ZBadge.vue'
 import ZButton from './src/components/ZButton.vue'
+import ZCard from './src/components/ZCard.vue'
 import ZCheckbox from './src/components/ZCheckbox.vue'
 import ZCode from './src/components/ZCode.vue'
 import ZCollapse from './src/components/ZCollapse.vue'
@@ -18,6 +19,7 @@ const Components = {
   ZAvatar,
   ZBadge,
   ZButton,
+  ZCard,
   ZCheckbox,
   ZCode,
   ZIcon,
@@ -47,6 +49,7 @@ export {
   ZAvatar,
   ZBadge,
   ZButton,
+  ZCard,
   ZCheckbox,
   ZCode,
   ZIcon,

@@ -1,5 +1,5 @@
 <template>
-  <div class="z-spinner" :style="{width: size, height: size}" :class="{'dark': dark}">
+  <div class="z-spinner" :style="{width: size, height: size}" :class="{ dark }">
     <div class="spinner" :style="{width: size, height: size}">
       <div class="spinner_bar" style="animation-delay: -1.2s; transform: rotate(0deg) translate(146%);"></div>
       <div class="spinner_bar" style="animation-delay: -1.1s; transform: rotate(30deg) translate(146%);"></div>

@@ -1,6 +1,6 @@
 <template>
   <div class="z-input" :style="label ? 'display:inline-flex;width:initial' : ''">
-    <span class="label" :class="{'dark': dark}" v-if="label">{{ label }}</span>
+    <span class="label" :class="{ dark }" v-if="label">{{ label }}</span>
     <div class="wrapper" :class="getClasses">
       <span class="icon" v-if="icon"><z-icon :name="icon" :dark="dark" /></span>
       <div>

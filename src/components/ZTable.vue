@@ -1,5 +1,5 @@
 <template>
-  <table class="z-table" :class="{'dark': dark}" :style="`width:${width}`">
+  <table class="z-table" :class="{ dark }" :style="`width:${width}`">
     <thead v-if="hasItems">
       <tr>
         <th v-for="(header, keyH) in headers" :key="keyH">

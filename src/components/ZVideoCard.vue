@@ -1,5 +1,5 @@
 <template>
-  <div class="z-video-card" :class="{'dark': dark}" :style="`width: ${width};`">
+  <div class="z-video-card" :class="{ dark }" :style="`width: ${width};`">
     <div v-if="src">
       <main>
         <div class="image">
