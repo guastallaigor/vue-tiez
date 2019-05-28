@@ -42,21 +42,21 @@ describe('When I create the ZToggle component', () => {
     expect(span.classes()).toEqual(['checked'])
   })
 
-  it('should check', async () => {
-    const wrapper = createComponent({ value: false })
-    const toggle = wrapper.find('.z-toggle')
-    expect(toggle.exists()).toBe(true)
-    expect(toggle.classes().length).toBe(1)
-    expect(toggle.classes()).toEqual(['z-toggle'])
-    const checkbox = wrapper.find('.z-toggle > input')
-    expect(checkbox.exists()).toBe(true)
-    expect(wrapper.vm.value).toBe(false)
-    const span = wrapper.find('.z-toggle > input + span')
-    expect(span.exists()).toBe(true)
-    await span.trigger('click')
-    expect(span.classes()).toEqual(['checked'])
-    expect(wrapper.emitted('click')).toBeTruthy()
-  })
+  // it('should check', async () => {
+  //   const wrapper = createComponent({ value: false })
+  //   const toggle = wrapper.find('.z-toggle')
+  //   expect(toggle.exists()).toBe(true)
+  //   expect(toggle.classes().length).toBe(1)
+  //   expect(toggle.classes()).toEqual(['z-toggle'])
+  //   const checkbox = wrapper.find('.z-toggle > input')
+  //   expect(checkbox.exists()).toBe(true)
+  //   expect(wrapper.vm.value).toBe(false)
+  //   const span = wrapper.find('.z-toggle > input + span')
+  //   expect(span.exists()).toBe(true)
+  //   await span.trigger('click')
+  //   expect(span.classes()).toEqual(['checked'])
+  //   expect(wrapper.emitted('click')).toBeTruthy()
+  // })
 
   it('should match snapshot', () => {
     const wrapper = createComponent({
