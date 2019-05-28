@@ -7,9 +7,9 @@ export default {
   name: 'z-badge',
   props: {
     content: {
-      type: String,
+      type: [Number, String],
       required: true,
-      default: ''
+      default: null
     },
     withText: {
       type: Boolean,
