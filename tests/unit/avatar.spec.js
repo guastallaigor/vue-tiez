@@ -39,6 +39,15 @@ describe('When I create the ZAvatar component', () => {
     expect(img.attributes().alt).toBe('Photo of Igor')
   })
 
+  it('should have an title attribute when the alt prop is passed', () => {
+    const wrapper = createComponent({ alt: 'Photo of Igor' })
+    const avatar = wrapper.find('.z-avatar')
+    expect(avatar.exists()).toBe(true)
+    const img = wrapper.find('.z-avatar > img')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes().title).toBe('Photo of Igor')
+  })
+
   it('should have a dark class when the dark prop is true', () => {
     const wrapper = createComponent({ dark: true })
     const avatar = wrapper.find('.z-avatar')
