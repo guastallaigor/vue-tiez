@@ -39,10 +39,7 @@ export default {
     getClasses () {
       const { disabled, dark } = this
 
-      return {
-        'disabled': disabled,
-        'dark': dark
-      }
+      return { disabled, dark }
     }
   }
 }

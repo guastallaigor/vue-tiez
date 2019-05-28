@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZToggle component should match snapshot 1`] = `<div class="z-toggle"><input type="checkbox" name="checkbox" aria-label="toggle"> <span class=""><div></div></span></div>`;
