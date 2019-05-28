@@ -1,6 +1,6 @@
 <template>
   <div class="z-note" :class="getClasses">
-    <b v-if="type">{{ customLabel || type }}:</b>
+    <b v-if="customLabel || type">{{ customLabel || type }}:</b>
     {{ content }}
     <div><slot/></div>
   </div>
@@ -12,7 +12,6 @@ export default {
   props: {
     content: {
       type: String,
-      required: true,
       default: ''
     },
     type: {
