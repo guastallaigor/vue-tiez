@@ -11,7 +11,6 @@ export default {
   props: {
     content: {
       type: String,
-      required: true,
       default: ''
     },
     withDolar: {

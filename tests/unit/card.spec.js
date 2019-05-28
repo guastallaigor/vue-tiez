@@ -25,7 +25,7 @@ describe('When I create the ZCard component', () => {
     expect(card.attributes().style).toBe('width: auto;')
   })
 
-  it('should change the width to 300px when the width prop is passed', () => {
+  it('should change the width to 300px', () => {
     const wrapper = createComponent({ width: '300px' })
     const card = wrapper.find('.z-card')
     expect(card.exists()).toBe(true)
@@ -33,7 +33,7 @@ describe('When I create the ZCard component', () => {
     expect(card.attributes().style).toBe('width: 300px;')
   })
 
-  it('should add a dark color when dark prop is passed', () => {
+  it('should add a dark color', () => {
     const wrapper = createComponent({ dark: true })
     const card = wrapper.find('.z-card')
     expect(card.exists()).toBe(true)
