@@ -55,21 +55,33 @@ describe('When I create the ZAvatar component', () => {
     expect(avatar.classes()).toEqual(['z-avatar', 'stacked'])
   })
 
-  it('should have 4 different sizes when the size prop is passed', () => {
+  it('should have a small size when size prop is passed small', () => {
     const wrapper = createComponent({ size: 'small' })
     const avatar = wrapper.find('.z-avatar')
     expect(avatar.exists()).toBe(true)
     expect(avatar.classes().length).toBe(2)
     expect(avatar.classes()).toEqual(['z-avatar', 'small'])
-    wrapper.setProps({ size: 'medium' })
+  })
+
+  it('should have a medium size when size prop is passed medium', () => {
+    const wrapper = createComponent({ size: 'medium' })
+    const avatar = wrapper.find('.z-avatar')
     expect(avatar.exists()).toBe(true)
     expect(avatar.classes().length).toBe(2)
     expect(avatar.classes()).toEqual(['z-avatar', 'medium'])
-    wrapper.setProps({ size: 'large' })
+  })
+
+  it('should have a large size when size prop is passed large', () => {
+    const wrapper = createComponent({ size: 'large' })
+    const avatar = wrapper.find('.z-avatar')
     expect(avatar.exists()).toBe(true)
     expect(avatar.classes().length).toBe(2)
     expect(avatar.classes()).toEqual(['z-avatar', 'large'])
-    wrapper.setProps({ size: '' })
+  })
+
+  it('should have a default size when size prop is passed an empty string', () => {
+    const wrapper = createComponent({ size: '' })
+    const avatar = wrapper.find('.z-avatar')
     expect(avatar.exists()).toBe(true)
     expect(avatar.classes().length).toBe(1)
     expect(avatar.classes()).toEqual(['z-avatar'])
