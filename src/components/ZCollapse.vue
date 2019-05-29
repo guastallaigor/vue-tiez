@@ -1,7 +1,8 @@
 <template>
   <div
     class="z-collapse"
-    v-if="copiedItems && copiedItems.length" :style="maxWidth ? `max-width:${maxWidth}` : ''"
+    v-if="copiedItems && copiedItems.length"
+    :style="maxWidth ? `max-width:${maxWidth}` : ''"
   >
     <div
       class="collapse"
@@ -37,6 +38,7 @@ export default {
   props: {
     items: {
       type: Array,
+      required: true,
       default: () => ([])
     },
     maxWidth: {
