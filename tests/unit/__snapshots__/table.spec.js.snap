@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZTable component should match snapshot 1`] = `
+<table class="z-table" style="width: 100%;">
+  <thead>
+    <tr>
+      <th>
+        <div> </div>
+      </th>
+      <th>
+        <div> NAME</div>
+      </th>
+      <th>
+        <div> USERNAME</div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr aria-roledescription="row">
+      <td>
+        <div><span class="z-avatar"><img alt="" title="" src="https://zeit.co/api/www/avatar/?u=evilrabbit&amp;s=160"></span></div>
+      </td>
+      <td>
+        <div>Evil Rabbit</div>
+      </td>
+      <td>
+        <div>evilrabbit</div>
+      </td>
+    </tr>
+    <tr aria-roledescription="row">
+      <td>
+        <div><span class="z-avatar"><img alt="" title="" src="https://zeit.co/api/www/avatar/?u=rauchg&amp;s=160"></span></div>
+      </td>
+      <td>
+        <div>Guilermo Rauch</div>
+      </td>
+      <td>
+        <div>rauchg</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
