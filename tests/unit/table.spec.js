@@ -7,7 +7,7 @@ describe('When I create the ZTable component', () => {
     return mount(ZTable, {
       propsData: propsData,
       stubs: {
-        ZAvatar,
+        ZAvatar
       },
       slots: {
         default: slot || 'ZTable'
