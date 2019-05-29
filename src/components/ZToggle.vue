@@ -1,7 +1,7 @@
 <template>
   <div class="z-toggle" :class="getClasses">
     <input type="checkbox" v-model="valueComp" name="checkbox" aria-label="toggle">
-    <span :class="{'checked': valueComp}" @click.prevent.stop="valueComp = !valueComp">
+    <span :class="{'checked': valueComp}" @click="toggle">
       <div></div>
     </span>
   </div>
@@ -40,6 +40,11 @@ export default {
       const { disabled, dark } = this
 
       return { disabled, dark }
+    }
+  },
+  methods: {
+    toggle () {
+      this.valueComp = !this.valueComp
     }
   }
 }
