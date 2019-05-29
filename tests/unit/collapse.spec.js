@@ -156,7 +156,6 @@ describe('When I create the ZCollapse component', () => {
     // expect(collapseContent.at(0).attributes().style).toBe('height: 120px;')
   })
 
-
   it('should match snapshot', () => {
     const wrapper = createComponent({
       items,
