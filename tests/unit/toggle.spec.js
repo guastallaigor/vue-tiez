@@ -42,7 +42,7 @@ describe('When I create the ZToggle component', () => {
     expect(span.classes()).toEqual(['checked'])
   })
 
-  it('should check', () => {
+  it('should check', async () => {
     const wrapper = createComponent({ value: false })
     wrapper.setMethods({ toggle: jest.fn() })
     const toggle = wrapper.find('.z-toggle')
@@ -55,11 +55,27 @@ describe('When I create the ZToggle component', () => {
     expect(wrapper.vm.valueComp).toBe(false)
     const span = wrapper.find('.z-toggle > span')
     expect(span.exists()).toBe(true)
-    span.trigger('click')
+    await span.trigger('click')
     expect(wrapper.vm.toggle).toHaveBeenCalledTimes(1)
     wrapper.setProps({ value: true })
-    expect(wrapper.vm.value).toBe(true)
     expect(wrapper.vm.valueComp).toBe(true)
+    expect(span.classes()).toEqual(['checked'])
+  })
+
+  it('should call toggle method', () => {
+    const wrapper = createComponent({ value: false })
+    const toggle = wrapper.find('.z-toggle')
+    expect(toggle.exists()).toBe(true)
+    const checkbox = wrapper.find('.z-toggle > input')
+    expect(checkbox.exists()).toBe(true)
+    expect(wrapper.vm.value).toBe(false)
+    expect(wrapper.vm.valueComp).toBe(false)
+    wrapper.vm.toggle()
+    expect(wrapper.emitted().input).toBeTruthy()
+    wrapper.setProps({ value: true })
+    expect(wrapper.vm.valueComp).toBe(true)
+    const span = wrapper.find('.z-toggle > span')
+    expect(span.exists()).toBe(true)
     expect(span.classes()).toEqual(['checked'])
   })
 
@@ -78,6 +94,7 @@ describe('When I create the ZToggle component', () => {
     expect(span.exists()).toBe(true)
     span.trigger('click')
     expect(wrapper.vm.toggle).toHaveBeenCalledTimes(1)
+    wrapper.vm.valueComp = true
     expect(wrapper.vm.value).toBe(false)
     expect(wrapper.vm.valueComp).toBe(false)
     expect(span.classes()).toEqual([])

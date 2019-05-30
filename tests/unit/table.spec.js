@@ -105,16 +105,18 @@ describe('When I create the ZTable component', () => {
     expect(table.html()).toBe('<table class="z-table" style="width: 100%;"><!----> <thead><tr><th><div>Test with slot</div></th></tr></thead> <tbody><tr><td>Test with slot</td></tr></tbody></table>')
   })
 
-  it('should mount the ZAvatar component', () => {
+  it('should mount the ZAvatar component', (done) => {
     const wrapper = mount(ZTable, {
       propsData: { headers, items },
-      AsyncComponent: ZAvatar
     })
     const table = wrapper.find('.z-table')
     expect(table.exists()).toBe(true)
     expect(table.classes().length).toBe(1)
     expect(table.classes()).toEqual(['z-table'])
-    expect(wrapper.find(ZAvatar).exists()).toBe(true)
+    setTimeout(() => {
+      expect(wrapper.find(ZAvatar).exists()).toBe(true)
+      done()
+    })
   })
 
   it('should match snapshot', () => {

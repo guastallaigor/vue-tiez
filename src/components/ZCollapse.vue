@@ -38,8 +38,7 @@ export default {
   props: {
     items: {
       type: Array,
-      required: true,
-      default: () => ([])
+      required: true
     },
     maxWidth: {
       type: String,
@@ -76,7 +75,8 @@ export default {
       item.height = (item.height > 0) ? 0 : 120
 
       this.copiedItems.forEach(it => {
-        if (item !== it) {
+        if ((item[this.titleAttr] !== it[this.titleAttr]) &&
+          (item[this.contentAttr] !== it[this.contentAttr])) {
           it.height = 0
         }
       })

@@ -142,6 +142,21 @@ describe('When I create the ZCollapse component', () => {
     expect(collapse.attributes().style).toBe('max-width: 10em;')
   })
 
+  it('should call changeHeight method', async () => {
+    const wrapper = createComponent({ items })
+    const collapse = wrapper.find('.z-collapse')
+    expect(collapse.exists()).toBe(true)
+    expect(collapse.classes().length).toBe(1)
+    await wrapper.vm.changeHeight(items[0])
+    expect(items[0]['height']).toBe(120)
+    expect(wrapper.vm.items[0].height).toBe(120)
+    expect(wrapper.vm.copiedItems[1].height).toBe(0)
+    const collapseContent = wrapper.findAll('.z-collapse > .collapse > .collapse-content')
+    expect(collapseContent.at(0).exists()).toBe(true)
+    // await wrapper.vm.$nextTick()
+    // expect(collapseContent.at(0).attributes().style).toBe('height: 120px;')
+  })
+
   it('should be able to expand and collapse', () => {
     const wrapper = createComponent({ items })
     wrapper.setMethods({ changeHeight: jest.fn() })
