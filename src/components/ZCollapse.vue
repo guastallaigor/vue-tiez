@@ -66,11 +66,14 @@ export default {
     }
   },
   created () {
-    this.copiedItems = this.items && this.items.length
-      ? this.items.map(it => ({ ...it, height: 0 }))
-      : []
+    this.setCopiedItems()
   },
   methods: {
+    setCopiedItems () {
+      this.copiedItems = this.items && this.items.length
+        ? this.items.map(it => ({ ...it, height: 0 }))
+        : []
+    },
     changeHeight (item) {
       item.height = (item.height > 0) ? 0 : 120
 

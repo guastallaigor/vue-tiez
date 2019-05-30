@@ -142,19 +142,32 @@ describe('When I create the ZCollapse component', () => {
     expect(collapse.attributes().style).toBe('max-width: 10em;')
   })
 
-  it('should call changeHeight method', async () => {
+  it('should call changeHeight method', () => {
     const wrapper = createComponent({ items })
     const collapse = wrapper.find('.z-collapse')
     expect(collapse.exists()).toBe(true)
     expect(collapse.classes().length).toBe(1)
-    await wrapper.vm.changeHeight(items[0])
+    wrapper.vm.changeHeight(items[0])
     expect(items[0]['height']).toBe(120)
     expect(wrapper.vm.items[0].height).toBe(120)
     expect(wrapper.vm.copiedItems[1].height).toBe(0)
-    const collapseContent = wrapper.findAll('.z-collapse > .collapse > .collapse-content')
-    expect(collapseContent.at(0).exists()).toBe(true)
+    wrapper.vm.changeHeight(items[0])
+    expect(items[0]['height']).toBe(0)
+    expect(wrapper.vm.items[0].height).toBe(0)
+    // WIP - NEEDS IMPROVEMENT
+    // const collapseContent = wrapper.findAll('.z-collapse > .collapse > .collapse-content')
+    // expect(collapseContent.at(0).exists()).toBe(true)
     // await wrapper.vm.$nextTick()
     // expect(collapseContent.at(0).attributes().style).toBe('height: 120px;')
+  })
+
+  it('should call changeHeight method', () => {
+    const wrapper = createComponent({ items: [] })
+    expect(wrapper.vm.copiedItems).toEqual([])
+    wrapper.setProps({ items })
+    wrapper.vm.setCopiedItems()
+    const copiedItems = items.map(it => ({ ...it, height: 0 }))
+    expect(wrapper.vm.copiedItems).toEqual(copiedItems)
   })
 
   it('should be able to expand and collapse', () => {

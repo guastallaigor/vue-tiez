@@ -107,7 +107,7 @@ describe('When I create the ZTable component', () => {
 
   it('should mount the ZAvatar component', (done) => {
     const wrapper = mount(ZTable, {
-      propsData: { headers, items },
+      propsData: { headers, items }
     })
     const table = wrapper.find('.z-table')
     expect(table.exists()).toBe(true)
