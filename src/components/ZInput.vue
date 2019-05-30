@@ -64,6 +64,7 @@ export default {
     },
     value: {
       type: [String, Number],
+      required: true,
       default: ''
     },
     maxLength: {
@@ -101,11 +102,14 @@ export default {
     }
   },
   mounted () {
-    if (this.autoFocus) {
-      this.$refs.input.focus()
-    }
+    this.setAutofocus()
   },
   methods: {
+    setAutofocus () {
+      if (this.autoFocus) {
+        this.$refs.input.focus()
+      }
+    },
     onFocus (event) {
       this.$emit('focus', event)
       this.focused = true
