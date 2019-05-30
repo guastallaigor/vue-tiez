@@ -62,6 +62,7 @@ describe('When I create the ZCollapse component', () => {
     expect(spanSvg.at(2).exists()).toBe(true)
     expect(spanSvg.at(3).exists()).toBe(true)
     expect(spanSvg.at(3).attributes().style).toBe('display: none;')
+    expect(spanSvg.length).toBe(4)
     const spanLine = wrapper.findAll('.z-collapse > .collapse > h3 > span:last-child > svg > line')
     expect(spanLine.at(0).exists()).toBe(true)
     expect(spanLine.at(0).attributes().stroke).toBe('#000')
@@ -71,7 +72,7 @@ describe('When I create the ZCollapse component', () => {
     expect(spanLine.at(2).attributes().stroke).toBe('#000')
     expect(spanLine.at(3).exists()).toBe(true)
     expect(spanLine.at(3).attributes().stroke).toBe('#000')
-    expect(spanSvg.length).toBe(4)
+    expect(spanLine.length).toBe(6)
   })
 
   it('should have a dark class', () => {
