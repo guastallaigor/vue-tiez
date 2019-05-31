@@ -79,29 +79,53 @@ describe('When I create the ZIcon component', () => {
       })
       setTimeout(() => {
         const svg = wrapper.find('svg')
+        expect(svg.attributes().width).toBe('20px')
         expect(svg.exists()).toBe(true)
         done()
       })
     })
   })
 
-  // it('should have a size of 666px', () => {
-  //   icons.forEach(async name => {
-  //     const wrapper = createComponent({ name, size: '666px' })
-  //     const svg = await wrapper.find('.z-icon')
-  //     svg && expect(svg.attributes().style).toBe('width: 666px; height: 666px;')
-  //     svg && expect(svg.exists()).toBe(true)
-  //   })
-  // })
+  it('should have a size of 666px (example add)', () => {
+    const wrapper = mount(ZIcon, {
+      propsData: { name: 'add', size: '666px' },
+      AsyncComponent: 'add',
+      slots: { default: 'ZIcon' }
+    })
+    const svg = wrapper.find('svg')
+    expect(svg.exists()).toBe(true)
+    expect(svg.attributes().width).toBe('666px')
+    expect(svg.attributes().height).toBe('666px')
+    expect(svg.attributes()['aria-label']).toBe('add team')
+  })
 
-  // it('should have a different color', () => {
-  //   icons.forEach(async name => {
-  //     const wrapper = createComponent({ name, size: '666px' })
-  //     const svg = await wrapper.find('.z-icon')
-  //     expect(svg.attributes().style).toBe('width: 666px; height: 666px;')
-  //     expect(svg.exists()).toBe(true)
-  //   })
-  // })
+  it('should have a different color (example add)', () => {
+    const wrapper = mount(ZIcon, {
+      propsData: { name: 'add', size: '666px', color: '#f40' },
+      AsyncComponent: 'add',
+      slots: { default: 'ZIcon' }
+    })
+    const circle = wrapper.find('svg > circle')
+    expect(circle.exists()).toBe(true)
+    expect(circle.attributes().stroke).toBe('#f40')
+    const lineFirst = wrapper.find('svg > circle + line')
+    expect(lineFirst.exists()).toBe(true)
+    expect(lineFirst.attributes().stroke).toBe('#f40')
+    const lineLast = wrapper.find('svg > line:last-child')
+    expect(lineLast.exists()).toBe(true)
+    expect(lineLast.attributes().stroke).toBe('#f40')
+  })
+
+  it('should have a dark mode (example add)', () => {
+    const wrapper = mount(ZIcon, {
+      propsData: { name: 'add', size: '666px', dark: true },
+      AsyncComponent: 'add',
+      slots: { default: 'ZIcon' }
+    })
+    const circle = wrapper.find('svg > circle')
+    expect(circle.exists()).toBe(true)
+    expect(circle.attributes().stroke).toBe('#444')
+  })
 
   it('should match snapshot', (done) => {
     icons.forEach(name => {
