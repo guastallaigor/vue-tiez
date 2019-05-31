@@ -417,13 +417,4 @@ export default {
     }
   }
 }
-
-/*
-.button.icon--push:not(.icon--right) {
-  padding-left: 42px;
-}
-.button.icon--right.icon--push {
-  padding-right: 42px;
-}
-*/
 </style>

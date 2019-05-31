@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When I create the ZButton component should match snapshot 1`] = `
+<button role="button" type="button" class="z-button primary">
+  <!---->
+  <!----> <span>Test</span>
+  <!---->
+  <!---->
+  <!----></button>
+`;
