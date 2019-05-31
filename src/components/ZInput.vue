@@ -1,5 +1,5 @@
 <template>
-  <div class="z-input" :style="label ? 'display:inline-flex;width:initial' : ''">
+  <div class="z-input" :style="label ? 'display:inline-flex' : ''">
     <span class="label" :class="{ dark }" v-if="label">{{ label }}</span>
     <div class="wrapper" :class="getClasses">
       <span class="icon" v-if="icon"><z-icon :name="icon" :dark="dark" /></span>
@@ -69,7 +69,7 @@ export default {
     },
     maxLength: {
       type: [String, Number],
-      default: ''
+      default: 0
     }
   },
   data: () => ({
@@ -95,7 +95,7 @@ export default {
       set (val) {
         if (this.disabled) return
 
-        if (val && val.length > this.maxLength) return
+        if (this.maxLength && ((val && val.length) > this.maxLength)) return
 
         this.$emit('input', val)
       }
