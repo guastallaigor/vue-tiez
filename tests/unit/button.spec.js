@@ -19,6 +19,31 @@ describe('When I create the ZButton component', () => {
     expect(wrapper.find(ZButton).isVueInstance()).toBe(true)
   })
 
+  it('should have a content', () => {
+    const wrapper = createComponent({ content: 'Test' })
+    const span = wrapper.find('.z-button > span')
+    expect(span.exists()).toBe(true)
+    expect(span.text()).toBe('Test')
+  })
+
+  it('should be small', () => {
+    const wrapper = createComponent({ content: 'Test', small: true })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(3)
+    expect(button.classes()).toEqual(['z-button', 'small', 'primary'])
+  })
+
+  it('should have a loading state', () => {
+    const wrapper = createComponent({ content: 'Test', loading: true })
+    const loadingShim = wrapper.find('.z-button > .loading-shim')
+    expect(loadingShim.exists()).toBe(true)
+    const loading = wrapper.find('.z-button > .loading-shim > .loading')
+    expect(loading.exists()).toBe(true)
+    const icon = wrapper.find('.z-button > .icon')
+    expect(icon.exists()).toBe(false)
+  })
+
   it('should have an icon', (done) => {
     const wrapper = mount(ZButton, {
       AsyncComponent: ZIcon,
@@ -34,12 +59,33 @@ describe('When I create the ZButton component', () => {
       expect(icon.exists()).toBe(true)
       const circle = wrapper.find('.z-button > .icon > svg > circle')
       expect(circle.attributes().stroke).toBe('#fff')
-      // const line = wrapper.findAll('.z-input > .wrapper > icon > svg > line')
-      // expect(line.at(0).attributes().stroke).toBe('#fff')
-      // expect(line.at(1).attributes().stroke).toBe('#fff')
+      const line = wrapper.findAll('.z-button > .icon > svg > line')
+      expect(line.length).toBe(2)
+      expect(line.at(0).attributes().stroke).toBe('#fff')
+      expect(line.at(1).attributes().stroke).toBe('#fff')
       done()
     })
   })
+
+  it('should have an icon in the right position', (done) => {
+    const wrapper = mount(ZButton, {
+      AsyncComponent: ZIcon,
+      propsData: { content: 'test', icon: 'add', withIconRight: true }
+    })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(3)
+    expect(button.classes()).toEqual(['z-button', 'icon', 'primary'])
+    setTimeout(() => {
+      expect(wrapper.find(ZIcon).exists()).toBe(true)
+      const icon = wrapper.find('.z-button > .icon')
+      expect(icon.exists()).toBe(true)
+      expect(icon.classes().length).toBe(2)
+      expect(icon.classes()).toEqual(['icon', 'right'])
+      done()
+    })
+  })
+
 
   // it('should have a dark class', () => {
   //   const wrapper = createComponent({ value: '', dark: true })

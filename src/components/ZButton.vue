@@ -16,7 +16,7 @@
         <span></span>
       </span>
     </span>
-    <span v-if="icon && !loading && !withIconRight" class="icon" :class="{'right': withIconRight}">
+    <span v-if="icon && !loading && !withIconRight" class="icon">
       <z-icon :name="icon" :color="getIconColor" />
     </span>
     <span v-if="content && !loading">{{ content }}</span>
