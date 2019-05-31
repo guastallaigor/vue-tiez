@@ -95,7 +95,11 @@ export default {
       set (val) {
         if (this.disabled) return
 
-        if (this.maxLength && ((val && val.length) > this.maxLength)) return
+        if (this.maxLength && ((val && val.length) > this.maxLength)) {
+          this.$emit('input', val.substring(0, this.maxLength))
+
+          return
+        }
 
         this.$emit('input', val)
       }

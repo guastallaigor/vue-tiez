@@ -120,12 +120,16 @@ describe('When I create the ZInput component', () => {
     expect(wrapper.emitted().input[0]).toEqual(['123'])
   })
 
-  it('should have a maxLength of 3 characters', () => {
+  it('should have a maxLength of 3 characters', async () => {
     const wrapper = createComponent({ value: '', maxLength: 3 })
     const input = wrapper.find('.z-input > .wrapper > div > input')
     expect(input.exists()).toBe(true)
     expect(input.attributes().type).toBe('text')
     expect(input.attributes().maxlength).toBe('3')
+    wrapper.vm.valueComp = 'teste'
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().input).toBeTruthy()
+    expect(wrapper.emitted().input[0]).toEqual(['tes'])
   })
 
   it('should have a disable attribute and class', async () => {
