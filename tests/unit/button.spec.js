@@ -1,4 +1,4 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils'
 import ZButton from '../../src/components/ZButton'
 import ZAnimation from '../../src/components/ZAnimation'
 import ZIcon from '../../src/components/ZIcon'
@@ -34,6 +34,54 @@ describe('When I create the ZButton component', () => {
     expect(button.classes()).toEqual(['z-button', 'small', 'primary'])
   })
 
+  it('should have a primary type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'primary' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'primary'])
+  })
+
+  it('should have a secondary type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'secondary' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'secondary'])
+  })
+
+  it('should have a warning type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'warning' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'warning'])
+  })
+
+  it('should have a highlight type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'highlight' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'highlight'])
+  })
+
+  it('should have a link type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'link' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'link'])
+  })
+
+  it('should have a abort type', () => {
+    const wrapper = createComponent({ content: 'Test', type: 'abort' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes().length).toBe(2)
+    expect(button.classes()).toEqual(['z-button', 'abort'])
+  })
+
   it('should have a loading state', () => {
     const wrapper = createComponent({ content: 'Test', loading: true })
     const loadingShim = wrapper.find('.z-button > .loading-shim')
@@ -67,6 +115,62 @@ describe('When I create the ZButton component', () => {
     })
   })
 
+  it('should emit a click event and set x and y for the animation component', async () => {
+    const wrapper = mount(ZButton, {
+      AsyncComponent: ZAnimation,
+      propsData: { content: 'Test' }
+    })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    button.trigger('click')
+    expect(wrapper.vm.$refs.button.getBoundingClientRect().left).toBe(0)
+    expect(wrapper.vm.$refs.button.getBoundingClientRect().right).toBe(0)
+    expect(wrapper.vm.x).toBe(0)
+    expect(wrapper.vm.y).toBe(0)
+    await wrapper.vm.$nextTick()
+    wrapper.vm.onClick(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 100,
+      clientY: 101,
+      view: window
+    }))
+    expect(wrapper.vm.x).toBe(100)
+    expect(wrapper.vm.y).toBe(101)
+    expect(wrapper.emitted().click).toBeTruthy()
+  })
+
+  it('should have the ZAnimation component, emit a click event and set to zero', async () => {
+    const localVue = createLocalVue()
+    const wrapperAnimation = mount(ZAnimation, {
+      localVue
+    })
+    const wrapperBtn = mount(ZButton, {
+      AsyncComponent: wrapperAnimation,
+      propsData: { content: 'Test' },
+      localVue
+    })
+    const animation = wrapperAnimation.find('.z-animation')
+    expect(animation.exists()).toBe(true)
+    await wrapperAnimation.vm.addAnimationEvent()
+    const mouseEvent = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 100,
+      clientY: 101,
+      view: window
+    })
+    await wrapperAnimation.vm.$emit('complete', mouseEvent)
+    expect(wrapperAnimation.emitted()['complete']).toBeTruthy()
+    const button = wrapperBtn.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(wrapperBtn.vm.x).toBe(null)
+    expect(wrapperBtn.vm.y).toBe(null)
+    await wrapperAnimation.vm.removeAnimationEvent()
+    wrapperAnimation.destroy()
+    // WIP
+  })
+
   it('should have an icon in the right position', (done) => {
     const wrapper = mount(ZButton, {
       AsyncComponent: ZIcon,
@@ -86,132 +190,19 @@ describe('When I create the ZButton component', () => {
     })
   })
 
+  it('should emit a click event', async () => {
+    const wrapper = createComponent({ content: 'Test' })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.attributes().type).toBe('button')
+    button.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().click).toBeTruthy()
+    expect(wrapper.vm.$refs.button.getBoundingClientRect().left).toBe(0)
+    expect(wrapper.vm.$refs.button.getBoundingClientRect().right).toBe(0)
+  })
 
-  // it('should have a dark class', () => {
-  //   const wrapper = createComponent({ value: '', dark: true })
-  //   const inputLabel = wrapper.find('.z-input > .wrapper')
-  //   expect(inputLabel.exists()).toBe(true)
-  //   expect(inputLabel.classes().length).toBe(2)
-  //   expect(inputLabel.classes()).toEqual(['wrapper', 'dark'])
-  // })
-
-  // it('should have a dark class and have a label', () => {
-  //   const wrapper = createComponent({ value: '', dark: true, label: 'Label' })
-  //   const label = wrapper.find('.z-input > .label')
-  //   expect(label.exists()).toBe(true)
-  //   expect(label.classes().length).toBe(2)
-  //   expect(label.classes()).toEqual(['label', 'dark'])
-  // })
-
-  // it('should have a label', () => {
-  //   const wrapper = createComponent({ value: '', label: 'Label' })
-  //   const label = wrapper.find('.z-input > .label')
-  //   expect(label.exists()).toBe(true)
-  //   expect(label.classes().length).toBe(1)
-  //   expect(label.classes()).toEqual(['label'])
-  //   const input = wrapper.find('.z-input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.classes().length).toBe(1)
-  //   expect(input.attributes().style).toBe('display: inline-flex;')
-  //   const wrapperDiv = wrapper.find('.z-input > .wrapper')
-  //   expect(wrapperDiv.exists()).toBe(true)
-  //   expect(wrapperDiv.classes().length).toBe(2)
-  //   expect(wrapperDiv.classes()).toEqual(['wrapper', 'inner-input'])
-  // })
-
-  // it('should have a type text', async () => {
-  //   const wrapper = createComponent({ value: '', type: 'text' })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('text')
-  //   input.element.value = 'test'
-  //   input.trigger('input')
-  //   await wrapper.vm.$nextTick()
-  //   expect(wrapper.vm.$refs.input.value).toBe('test')
-  //   expect(wrapper.emitted().input).toBeTruthy()
-  //   expect(wrapper.emitted().input[0]).toEqual(['test'])
-  // })
-
-  // it('should have a type number', async () => {
-  //   const wrapper = createComponent({ value: '', type: 'number' })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('number')
-  //   input.element.value = 123
-  //   input.trigger('input')
-  //   await wrapper.vm.$nextTick()
-  //   expect(wrapper.vm.$refs.input.value).toBe('123')
-  //   expect(wrapper.emitted().input).toBeTruthy()
-  //   expect(wrapper.emitted().input[0]).toEqual(['123'])
-  // })
-
-  // it('should have a maxLength of 3 characters', async () => {
-  //   const wrapper = createComponent({ value: '', maxLength: 3 })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('text')
-  //   expect(input.attributes().maxlength).toBe('3')
-  //   wrapper.vm.valueComp = 'teste'
-  //   await wrapper.vm.$nextTick()
-  //   expect(wrapper.emitted().input).toBeTruthy()
-  //   expect(wrapper.emitted().input[0]).toEqual(['tes'])
-  // })
-
-  // it('should have a disable attribute and class', async () => {
-  //   const wrapper = createComponent({ value: '', disabled: true })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('text')
-  //   expect(input.attributes().disabled).toBe('disabled')
-  //   const wrapperDiv = wrapper.find('.z-input > .wrapper')
-  //   expect(wrapperDiv.exists()).toBe(true)
-  //   expect(wrapperDiv.classes().length).toBe(2)
-  //   expect(wrapperDiv.classes()).toEqual(['wrapper', 'disabled'])
-  //   input.element.value = 'test'
-  //   input.trigger('input')
-  //   await wrapper.vm.$nextTick()
-  //   wrapper.vm.valueComp = 'other'
-  //   expect(wrapper.vm.valueComp).toBe('')
-  //   expect(wrapper.emitted().input).toBeFalsy()
-  // })
-
-  // it('should have a placeholder', () => {
-  //   const wrapper = createComponent({ value: '', placeholder: 'Placeholder' })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().placeholder).toBe('Placeholder')
-  // })
-
-  // it('should have an error class', () => {
-  //   const wrapper = createComponent({ value: '', error: true })
-  //   const wrapperDiv = wrapper.find('.z-input > .wrapper')
-  //   expect(wrapperDiv.exists()).toBe(true)
-  //   expect(wrapperDiv.classes().length).toBe(2)
-  //   expect(wrapperDiv.classes()).toEqual(['wrapper', 'error'])
-  // })
-
-  // it('should emit a blur event', async () => {
-  //   const wrapper = createComponent({ value: '' })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('text')
-  //   input.element.value = 'test'
-  //   input.trigger('blur')
-  //   await wrapper.vm.$nextTick()
-  //   expect(wrapper.emitted().blur).toBeTruthy()
-  //   expect(wrapper.vm.focused).toBe(false)
-  // })
-
-  // it('should emit a focus event', async () => {
-  //   const wrapper = createComponent({ value: '', autoFocus: true })
-  //   const input = wrapper.find('.z-input > .wrapper > div > input')
-  //   expect(input.exists()).toBe(true)
-  //   expect(input.attributes().type).toBe('text')
-  //   input.trigger('focus')
-  //   await wrapper.vm.$nextTick()
-  //   expect(wrapper.emitted().focus).toBeTruthy()
-  //   expect(wrapper.vm.focused).toBe(true)
-  // })
+  // WIP - shadow / active / disabled / hover(getIconColor)
 
   it('should match snapshot', () => {
     const wrapper = createComponent({

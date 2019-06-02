@@ -36,16 +36,22 @@ export default {
     }
   },
   mounted () {
-    if (this.$refs.animation) {
-      this.$refs.animation.addEventListener('animationend', this.onAnimationEnd)
-    }
+    this.addAnimationEvent()
   },
   beforeDestroy () {
-    if (this.$refs.animation) {
-      this.$refs.animation.removeEventListener('animationend', this.onAnimationEnd)
-    }
+    this.removeAnimationEvent()
   },
   methods: {
+    addAnimationEvent () {
+      if (this.$refs.animation) {
+        this.$refs.animation.addEventListener('animationend', this.onAnimationEnd)
+      }
+    },
+    removeAnimationEvent () {
+      if (this.$refs.animation) {
+        this.$refs.animation.removeEventListener('animationend', this.onAnimationEnd)
+      }
+    },
     onAnimationEnd (event) {
       this.$emit('complete', event || null)
     }
