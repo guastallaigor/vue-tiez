@@ -127,17 +127,14 @@ describe('When I create the ZIcon component', () => {
     expect(circle.attributes().stroke).toBe('#444')
   })
 
-  it('should match snapshot', (done) => {
-    icons.forEach(name => {
+  it('should match snapshot', () => {
+    icons.forEach(async name => {
       const wrapper = mount(ZIcon, {
         propsData: { name },
         AsyncComponent: name,
         slots: { default: 'ZIcon' }
       })
-      setTimeout(() => {
-        expect(wrapper.html()).toMatchSnapshot()
-        done()
-      })
+      await expect(wrapper.html()).toMatchSnapshot()
     })
   })
 })
