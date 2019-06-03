@@ -2,11 +2,11 @@
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/guastallaigor/vue-tiez/issues)
 
-Thanks for your interest in contributing to Vue Tiez!
+Thanks for your interest in contributing to Vue Tiez! ❤️ 
 
 **Please ask first before starting work on any significant new features!**
 
-The main goal right now is to have all the components from [Zeit Design][zeit-design]
+The main goal right now is that we have all the components from [Zeit Design System][zeit-design]
 
 ## Coding standards
 
@@ -14,7 +14,7 @@ The main goal right now is to have all the components from [Zeit Design][zeit-de
 
 We also follow [Stylelint][stylelint] / [Stylelint Config Standard][stylelint-config-standard]
 
-If you changed or added something in the CSS, you can use `yarn run stylelint` and `yarn run stylelint:vue` to check if there's anything wrong regarding the lint
+You can use `yarn run stylelint` and `yarn run stylelint:vue` to check if there's anything wrong regarding the lint
 
 ## Basic information
 
@@ -34,8 +34,6 @@ If you changed or added something in the CSS, you can use `yarn run stylelint` a
   [Commitizen/Commitlint](#commit-formatting)
 
 ## Project setup
-
-We're really happy you want to contribute to the project! ❤️ 
 
 The following steps will get you up and running:
 
