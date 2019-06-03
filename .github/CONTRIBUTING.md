@@ -12,12 +12,16 @@ The main goal right now is to have all the components from [Zeit Design][zeit-de
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/standard/standard)
 
+We also follow [Stylelint][stylelint] / [Stylelint Config Standard][stylelint-config-standard]
+
+If you changed or added something in the CSS, you can use `yarn run stylelint` and `yarn run stylelint:vue` to check if there's anything wrong regarding the lint
+
 ## Things to know
 
 **Working on your first Pull Request?**
 [How to Contribute to an Open Source Project on GitHub][egghead]
 
-## How do
+## Basic information
 
 * Project setup?
   [We've got you covered!](#project-setup)
@@ -36,7 +40,9 @@ The main goal right now is to have all the components from [Zeit Design][zeit-de
 
 ## Project setup
 
-We're really happy you want to contribute to the project! ❤️ The following steps will get you up and running:
+We're really happy you want to contribute to the project! ❤️ 
+
+The following steps will get you up and running:
 
 1. Fork and clone the repo
 ```sh
@@ -80,5 +86,7 @@ If an error occurs, you can use the `npm run commit:retry` command that runs the
 [commitlint]: [https://github.com/conventional-changelog/commitlint]
 [egghead]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
 [new-issue]: https://github.com/guastallaigor/vue-tiez/issues/new/choose
-[new-pr]: https://github.com/guastallaigor/vue-tiez/compare/develop...develop
+[new-pr]: https://github.com/guastallaigor/vue-tiez/compare/master...master
 [zeit-design]: https://zeit.co/design
+[stylelint]: https://github.com/stylelint/stylelint
+[stylelint-config-standard]: https://github.com/stylelint/stylelint-config-standard
