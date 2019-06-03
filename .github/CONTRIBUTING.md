@@ -61,7 +61,7 @@ $ yarn storybook
 ```
 
 ### Jest
-Before making the PR, if you changed or added something that needs to be tested, please make the tests inside the `tests/unit` folder.
+Before making the PR, if you changed or added something that needs to be tested, please make the tests inside the `tests/unit` folder
 
 To run the tests, you can use the next command
 
@@ -71,13 +71,13 @@ $ yarn test:unit
 
 ## Commit formatting
 
-We use [Commitizen][commitizen] and [`commitlint`][commitlint] to make sure all of the commits to the project are easy to read.
+We use [Commitizen][commitizen] and [`commitlint`][commitlint] to make sure all of the commits to the project are easy to read
 
-You can commit using `npm run commit` to help you with that.
+You can commit using `npm run commit` to help you with that
 
-There's a `pre-push` hook that runs all the unit tests before you can push it.
+There's a `pre-push` hook that runs all the unit tests before you can push it
 
-If an error occurs, you can use the `npm run commit:retry` command that runs the previous `npm run commit` that you already filled.
+If an error occurs, you can use the `npm run commit:retry` command that runs the previous `npm run commit` that you already filled
 
 
 
