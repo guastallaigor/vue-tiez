@@ -59,7 +59,6 @@ describe('When I create the ZToggle component', () => {
     expect(wrapper.vm.toggle).toHaveBeenCalledTimes(1)
     wrapper.setProps({ value: true })
     expect(wrapper.vm.valueComp).toBe(true)
-    expect(span.classes()).toEqual(['checked'])
   })
 
   it('should call toggle method', () => {
@@ -76,7 +75,6 @@ describe('When I create the ZToggle component', () => {
     expect(wrapper.vm.valueComp).toBe(true)
     const span = wrapper.find('.z-toggle > span')
     expect(span.exists()).toBe(true)
-    expect(span.classes()).toEqual(['checked'])
   })
 
   it('should not check when disabled', () => {
