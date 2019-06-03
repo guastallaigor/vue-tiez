@@ -16,11 +16,6 @@ We also follow [Stylelint][stylelint] / [Stylelint Config Standard][stylelint-co
 
 If you changed or added something in the CSS, you can use `yarn run stylelint` and `yarn run stylelint:vue` to check if there's anything wrong regarding the lint
 
-## Things to know
-
-**Working on your first Pull Request?**
-[How to Contribute to an Open Source Project on GitHub][egghead]
-
 ## Basic information
 
 * Project setup?
