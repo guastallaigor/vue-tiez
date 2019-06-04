@@ -63,7 +63,7 @@ export default {
       align-items: center;
       justify-content: center;
       background: rgb(239, 239, 239);
-      margin: 0px 20px;
+      margin: 0 20px;
     }
   }
 
