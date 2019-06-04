@@ -140,7 +140,7 @@ describe('When I create the ZButton component', () => {
     expect(wrapper.emitted().click).toBeTruthy()
   })
 
-  it('should have the ZAnimation component, emit a click event and set to zero', async () => {
+  it('should have the ZAnimation component, emit a click event and set to null', async () => {
     const localVue = createLocalVue()
     const wrapperAnimation = mount(ZAnimation, {
       localVue
@@ -150,24 +150,23 @@ describe('When I create the ZButton component', () => {
       propsData: { content: 'Test' },
       localVue
     })
+    const stub = jest.fn()
+    wrapperBtn.setMethods({ onAnimationEnd: stub })
+    wrapperBtn.vm.$on('complete', stub)
     const animation = wrapperAnimation.find('.z-animation')
     expect(animation.exists()).toBe(true)
-    await wrapperAnimation.vm.addAnimationEvent()
-    const mouseEvent = new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-      clientX: 100,
-      clientY: 101,
-      view: window
-    })
-    await wrapperAnimation.vm.$emit('complete', mouseEvent)
+    wrapperAnimation.vm.addAnimationEvent()
+    wrapperAnimation.find(ZAnimation).vm.$emit('complete')
     expect(wrapperAnimation.emitted()['complete']).toBeTruthy()
+    wrapperBtn.vm.onAnimationEnd()
+    wrapperAnimation.vm.removeAnimationEvent()
+    wrapperAnimation.destroy()
+    expect(stub).toBeCalled()
     const button = wrapperBtn.find('.z-button')
     expect(button.exists()).toBe(true)
     expect(wrapperBtn.vm.x).toBe(null)
     expect(wrapperBtn.vm.y).toBe(null)
-    await wrapperAnimation.vm.removeAnimationEvent()
-    wrapperAnimation.destroy()
+
     // WIP
   })
 
@@ -202,7 +201,38 @@ describe('When I create the ZButton component', () => {
     expect(wrapper.vm.$refs.button.getBoundingClientRect().right).toBe(0)
   })
 
-  // WIP - shadow / active / disabled / hover(getIconColor)
+  it('should be disabled', async () => {
+    const wrapper = createComponent({ content: 'Test', disabled: true })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes()).toEqual(['z-button', 'disabled', 'primary'])
+    button.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().click).toBeFalsy()
+    wrapper.vm.onClick(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 100,
+      clientY: 101,
+      view: window
+    }))
+    expect(wrapper.vm.x).toBe(null)
+    expect(wrapper.vm.y).toBe(null)
+  })
+
+  it('should be active', () => {
+    const wrapper = createComponent({ content: 'Test', active: true })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes()).toEqual(['z-button', 'active', 'primary'])
+  })
+
+  it('should has shadow', () => {
+    const wrapper = createComponent({ content: 'Test', shadow: true })
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
+    expect(button.classes()).toEqual(['z-button', 'shadow', 'primary'])
+  })
 
   it('should match snapshot', () => {
     const wrapper = createComponent({
