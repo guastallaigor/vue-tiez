@@ -1,34 +1,30 @@
-# vue-tiez
+<p align="center">
+    <a href="https://vue-tiez.now.sh/" target="_blank"><img width="200" src="https://ik.imagekit.io/6xhf1gnexgdgk/logo_xziuBnHrS.png"></a><br>
+    Vue.js Component Library that uses <a href="https://zeit.co/design">ZEIT Design System</a>
+</p>
 
-## Project setup
-```
-npm install
-```
+<p align="center">
+    <a href="https://codecov.io/gh/guastallaigor/vue-horizontal-timeline"><img src="https://codecov.io/gh/guastallaigor/vue-horizontal-timeline/branch/master/graph/badge.svg" alt="Code Coverage"></a>
+    <a href="https://www.npmjs.com/package/vue-tiez"><img src="https://img.shields.io/npm/dt/vue-tiez.svg" alt="Total Downloads"></a>
+    <a href="https://github.com/vue-tiez/vue-tiez/releases"><img src="https://img.shields.io/npm/v/vue-tiez.svg" alt="Latest Release"></a>
+</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+------
 
-### Compiles and minifies for production
-```
-npm run build
-```
+> **Note:**
+> This is an unofficial project.
+> I do not work or am I affiliated with ZEIT.
 
-### Run your tests
-```
-npm run test
-```
+## Documentation
 
-### Lints and fixes files
-```
-npm run lint
-```
+Visit [vue-tiez.now.sh](https://vue-tiez.now.sh/)
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Contributing
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+If you're interested in contributing to Vue Tiez, checkout our [contributing docs](https://github.com/vue-tiez/vue-tiez/blob/master/.github/CONTRIBUTING.md) for more information
+
+<a href="https://www.buymeacoffee.com/guastallaigor" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
+## License
+
+MIT © [guastallaigor](https://github.com/guastallaigor/vue-tiez/blob/master/LICENSE)
