@@ -1,10 +1,10 @@
 <p align="center">
-    <a href="https://vue-tiez.now.sh/" target="_blank"><img width="200" src="https://ik.imagekit.io/6xhf1gnexgdgk/logo_xziuBnHrS.png"></a><br>
+    <a href="https://vue-tiez.now.sh/" target="_blank"><img width="300" src="https://ik.imagekit.io/6xhf1gnexgdgk/aaa_612ptcCPv.png"></a><br>
     Vue.js Component Library that uses <a href="https://zeit.co/design">ZEIT Design System</a>
 </p>
 
 <p align="center">
-    <a href="https://codecov.io/gh/guastallaigor/vue-horizontal-timeline"><img src="https://codecov.io/gh/guastallaigor/vue-horizontal-timeline/branch/master/graph/badge.svg" alt="Code Coverage"></a>
+    <a href="https://codecov.io/gh/guastallaigor/vue-tiez"><img src="https://codecov.io/gh/guastallaigor/vue-tiez/branch/master/graph/badge.svg" alt="Code Coverage"></a>
     <a href="https://www.npmjs.com/package/vue-tiez"><img src="https://img.shields.io/npm/dt/vue-tiez.svg" alt="Total Downloads"></a>
     <a href="https://github.com/vue-tiez/vue-tiez/releases"><img src="https://img.shields.io/npm/v/vue-tiez.svg" alt="Latest Release"></a>
 </p>
