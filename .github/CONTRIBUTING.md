@@ -62,6 +62,12 @@ To run the tests, you can use the next command
 $ yarn test:unit
 ```
 
+To develop using tests, you can use this command also
+
+```sh
+$ yarn test:watch
+```
+
 ## Commit formatting
 
 We use [Commitizen][commitizen] and [`commitlint`][commitlint] to make sure all of the commits to the project are easy to read
