@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://vue-tiez.now.sh/" target="_blank"><img width="300" src="https://ik.imagekit.io/6xhf1gnexgdgk/aaa_612ptcCPv.png"></a><br>
+    <a href="https://vue-tiez.now.sh/" target="_blank"><img width="500" src="https://ik.imagekit.io/6xhf1gnexgdgk/aaa_612ptcCPv.png"></a><br>
     Vue.js Component Library that uses <a href="https://zeit.co/design">ZEIT Design System</a>
 </p>
 
