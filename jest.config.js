@@ -22,8 +22,8 @@ module.exports = {
   testURL: 'http://localhost/',
   coverageDirectory: './coverage/',
   collectCoverage: true,
-  coverageReporters: ["html", "text"],
-  collectCoverageFrom: ["!src/components/ZSlider.vue", "src/components/*.{js,vue}", "!**/node_modules/**"],
+  coverageReporters: ['html', 'text'],
+  collectCoverageFrom: ['!src/components/ZSlider.vue', 'src/components/*.{js,vue}', '!**/node_modules/**'],
   transformIgnorePatterns: [
     'node_modules/(?!(babel-jest|jest-vue-preprocessor)/)'
   ]
