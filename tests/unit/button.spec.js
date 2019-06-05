@@ -166,7 +166,6 @@ describe('When I create the ZButton component', () => {
     expect(button.exists()).toBe(true)
     expect(wrapperBtn.vm.x).toBe(null)
     expect(wrapperBtn.vm.y).toBe(null)
-
     // WIP
   })
 
@@ -232,6 +231,22 @@ describe('When I create the ZButton component', () => {
     const button = wrapper.find('.z-button')
     expect(button.exists()).toBe(true)
     expect(button.classes()).toEqual(['z-button', 'shadow', 'primary'])
+  })
+
+  it('should validate all the props type', () => {
+    const wrapper = createComponent({ content: 'Test' })
+    const type = wrapper.vm.$options.props.type
+    expect(type.required).toBeFalsy()
+    expect(type.type).toBe(String)
+    expect(type.default).toBe('primary')
+    expect(type.validator && type.validator('primary')).toBeTruthy()
+    expect(type.validator && type.validator('secondary')).toBeTruthy()
+    expect(type.validator && type.validator('warning')).toBeTruthy()
+    expect(type.validator && type.validator('highlight')).toBeTruthy()
+    expect(type.validator && type.validator('link')).toBeTruthy()
+    expect(type.validator && type.validator('abort')).toBeTruthy()
+    const button = wrapper.find('.z-button')
+    expect(button.exists()).toBe(true)
   })
 
   it('should match snapshot', () => {

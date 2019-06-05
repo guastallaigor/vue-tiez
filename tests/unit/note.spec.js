@@ -76,6 +76,19 @@ describe('When I create the ZNote component', () => {
     expect(label.html()).toBe('<b>warning:</b>')
   })
 
+  it('should validate all the props type', () => {
+    const wrapper = createComponent({ content: 'Content' })
+    const type = wrapper.vm.$options.props.type
+    expect(type.required).toBeFalsy()
+    expect(type.type).toBe(String)
+    expect(type.validator && type.validator('hint')).toBeTruthy()
+    expect(type.validator && type.validator('alert')).toBeTruthy()
+    expect(type.validator && type.validator('warning')).toBeTruthy()
+    expect(type.validator && type.validator('')).toBeTruthy()
+    const note = wrapper.find('.z-note')
+    expect(note.exists()).toBe(true)
+  })
+
   it('should have a slot instead of the content', () => {
     const wrapper = createComponent({ type: 'hint' }, '<span>test with slot</span>')
     const note = wrapper.find('.z-note')

@@ -61,6 +61,19 @@ describe('When I create the ZBadge component', () => {
     expect(badge.html()).toBe('<span class="z-badge black with-text">Content</span>')
   })
 
+  it('should validate all the props color', () => {
+    const wrapper = createComponent({ content: 'Content' })
+    const color = wrapper.vm.$options.props.color
+    expect(color.required).toBeFalsy()
+    expect(color.type).toBe(String)
+    expect(color.default).toBe('black')
+    expect(color.validator && color.validator('red')).toBeTruthy()
+    expect(color.validator && color.validator('black')).toBeTruthy()
+    expect(color.validator && color.validator('dark')).toBeTruthy()
+    const badge = wrapper.find('.z-badge')
+    expect(badge.exists()).toBe(true)
+  })
+
   it('should match snapshot', () => {
     const wrapper = createComponent({
       content: 'Content',
