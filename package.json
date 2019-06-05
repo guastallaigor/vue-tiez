@@ -15,7 +15,7 @@
     "stylelint:vue": "stylelint src/components/*.vue",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --no-cache",
     "test:watch": "vue-cli-service test:unit --watch",
     "commit": "git-cz",
     "commit:retry": "git-cz --retry",

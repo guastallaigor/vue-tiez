@@ -16,7 +16,8 @@ export default {
       type: String,
       default: 'auto'
     }
-  }
+  },
+  data: () => ({})
 }
 </script>
 
