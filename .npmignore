@@ -4,6 +4,8 @@
 .vscode
 jest.config.js
 postcss.config.js
+.huskyrc.json
+.eslintrc.js
 
 # Build files
 .circleci
