@@ -2,7 +2,7 @@
   "name": "vue-tiez",
   "version": "0.1.0",
   "private": false,
-  "description": "Vue.js Component Library that uses Zeit Design System",
+  "description": "Vue.js Component Library that uses ZEIT Design System",
   "homepage": "https://github.com/guastallaigor/vue-tiez#readme",
   "author": "Igor Guastalla de Lima",
   "scripts": {
@@ -65,7 +65,8 @@
     "vue",
     "vuejs",
     "tiez",
-    "components-framework",
+    "components",
+    "framework",
     "vue-components"
   ],
   "license": "MIT",
