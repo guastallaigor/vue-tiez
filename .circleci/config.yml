@@ -19,7 +19,8 @@ jobs:
       - checkout
       - run:
           name: Lint commit messages
-          command: /bin/sh /.scripts/commitlint_range.sh
+          command: |
+            /bin/sh /.scripts/commitlint_range.sh
 
   checkout:
     <<: *defaults
@@ -73,36 +74,6 @@ jobs:
           root: .
           paths:
             - node_modules
-
-  build:
-    <<: *defaults
-
-    steps:
-      - attach_workspace:
-          at: .
-
-      - restore_cache:
-          name: Restore Build Cache
-          keys:
-            - build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
-            - build-{{ .Branch }}
-            - build-master
-            - build-
-
-      - run:
-          name: Build the Framework
-          command: npm run build
-
-      - save_cache:
-          name: Save Build Cache
-          key: build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - dist
-
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist
 
   lint:
     <<: *defaults
@@ -160,15 +131,9 @@ jobs:
       - store_artifacts:
           path: coverage
 
-      - store_test_results:
-          path: test-results
-
   upload-coverage:
     <<: *defaults
 
-    environment:
-      - CODECOV_TOKEN: dca17109-8079-4335-b0ff-f0bf418672f6
-    
     steps:
       - attach_workspace:
           at: .
@@ -184,10 +149,7 @@ workflows:
   main:
     jobs:
       - checkout
-      - commitlint:
-          filters:
-            branches:
-              only: master
+      - commitlint
       - install-dependencies:
           requires:
             - checkout
@@ -200,13 +162,9 @@ workflows:
       - lint:
           requires:
             - install-dependencies
-      - build:
-          requires:
-            - install-dependencies    
       - upload-coverage:
           requires:
             - install-dependencies
             - test
             - coverage
             - lint
-            - build
