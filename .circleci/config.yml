@@ -151,7 +151,7 @@ jobs:
       - store_test_results:
           path: test-results
 
-  upload_coverage:
+  upload-coverage:
     <<: *defaults
 
     environment:
