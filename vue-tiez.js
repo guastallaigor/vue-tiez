@@ -9,7 +9,7 @@ import ZIcon from './src/components/ZIcon.vue'
 import ZInput from './src/components/ZInput.vue'
 import ZNote from './src/components/ZNote.vue'
 import ZScroller from './src/components/ZScroller.vue'
-import ZShowMore from './src/components/ZShowMore.vue'
+import ZShowMoreToggle from './src/components/ZShowMoreToggle.vue'
 import ZSpinner from './src/components/ZSpinner.vue'
 import ZTable from './src/components/ZTable.vue'
 import ZToggle from './src/components/ZToggle.vue'
@@ -27,7 +27,7 @@ const Components = {
   ZInput,
   ZNote,
   ZScroller,
-  ZShowMore,
+  ZShowMoreToggle,
   ZSpinner,
   ZTable,
   ZToggle,
@@ -58,7 +58,7 @@ export {
   ZInput,
   ZNote,
   ZScroller,
-  ZShowMore,
+  ZShowMoreToggle,
   ZSpinner,
   ZTable,
   ZToggle,

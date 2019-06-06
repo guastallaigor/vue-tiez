@@ -25,7 +25,7 @@
 export default {
   name: 'z-table',
   components: {
-    ZAvatar: () => import('@/components/ZAvatar')
+    ZAvatar: () => import('./ZAvatar')
   },
   props: {
     headers: {
