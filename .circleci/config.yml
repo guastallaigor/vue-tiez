@@ -7,7 +7,7 @@ defaults: &defaults
   working_directory: ~/app
 
 orbs:
-  codecov: codecov/codecov@1.0.2
+  codecov: codecov/codecov@1.0.4
 
 jobs:
   commitlint:
@@ -148,8 +148,20 @@ jobs:
       - store_artifacts:
           path: coverage
 
+  upload_coverage:
+    <<: *defaults
+
+    environment:
+      - CODECOV_TOKEN: dca17109-8079-4335-b0ff-f0bf418672f6
+    
+    steps:
+      - attach_workspace:
+          at: .
+
       - codecov/upload:
-          file: coverage
+          conf: .codecov.yml
+          token: dca17109-8079-4335-b0ff-f0bf418672f6
+          file: {{ coverage_report_filepath }}
 
 workflows:
   version: 2
@@ -172,4 +184,9 @@ workflows:
             - install-dependencies
       - build:
           requires:
-            - install-dependencies      
+            - install-dependencies    
+      - upload-coverage:
+          requires:
+            - test
+            - coverage
+  
