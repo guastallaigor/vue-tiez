@@ -130,12 +130,9 @@ jobs:
       - store_test_results:
           path: ~/app/coverage
 
-      - store_artifacts:
-          path: ~/app/coverage
-
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: ~/app/coverage/*
+          file: ~/app/coverage/*.{info,xml}
           flags: frontend
 
 workflows:
