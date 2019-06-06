@@ -125,17 +125,18 @@ jobs:
 
       - run:
           name: Generate and upload coverage report
-          command: yarn test:unit --coverage --coverageDirectory=/home/circleci/app/coverage
+          command: yarn test:unit --coverage --coverageReporters=json --collectCoverage=true --coverageDirectory=/home/circleci/app/coverage
 
       - store_test_results:
           path: ~/app/coverage
 
       - store_artifacts:
           path: ~/app/coverage
+          destination: ~/app/coverage
 
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: ~/app/coverage/lcov.info
+          file: ~/app/coverage/*.json
           flags: frontend
 
 workflows:
