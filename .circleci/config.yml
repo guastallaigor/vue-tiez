@@ -169,7 +169,7 @@ workflows:
   main:
     jobs:
       - checkout
-      - commitlint:
+      - commitlint
       - install-dependencies:
           requires:
             - checkout
