@@ -54,18 +54,18 @@ jobs:
           at: .
 
       - restore_cache:
-          name: Restore npm Package Cache
+          name: Restore yarn Package Cache
           keys:
-            - npm-{{ checksum "package-lock.json" }}
-            - npm-
+            - yarn-{{ checksum "yarn.lock" }}
+            - yarn-
 
       - run:
           name: Install Dependencies
-          command: npm install
+          command: yarn install
 
       - save_cache:
-          name: Save npm Package Cache
-          key: npm-{{ checksum "package-lock.json" }}
+          name: Save yarn Package Cache
+          key: yarn-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
 
@@ -112,8 +112,20 @@ jobs:
           at: .
 
       - run:
-          name: Lint styles
-          command: npx stylelint -- --fix
+          name: Add Yarn Binary Folder To $PATH
+          command: export PATH="$PATH:`yarn global bin`"
+
+      - run:
+          name: Lint styles from SCSS files
+          command: npx stylelint scss/*.scss -- --fix
+
+      - run:
+          name: Lint styles from Vue files
+          command: npx stylelint src/components/*.vue -- --fix
+
+      - run:
+          name: Lint JS
+          command: yarn lint
 
   test:
     <<: *defaults
@@ -164,7 +176,7 @@ jobs:
       - codecov/upload:
           conf: .codecov.yml
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: {{ coverage_report_filepath }}
+          file: coverage
 
 workflows:
   version: 2
@@ -172,7 +184,10 @@ workflows:
   main:
     jobs:
       - checkout
-      - commitlint
+      - commitlint:
+          filters:
+            branches:
+              only: master
       - install-dependencies:
           requires:
             - checkout
@@ -190,6 +205,8 @@ workflows:
             - install-dependencies    
       - upload-coverage:
           requires:
+            - install-dependencies
             - test
             - coverage
-  
+            - lint
+            - build
