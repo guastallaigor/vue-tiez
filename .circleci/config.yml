@@ -164,7 +164,7 @@ jobs:
       - codecov/upload:
           conf: .codecov.yml
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: {{ coverage_report_filepath }}
+          file: coverage
 
 workflows:
   version: 2
@@ -190,6 +190,8 @@ workflows:
             - install-dependencies    
       - upload-coverage:
           requires:
+            - install-dependencies
             - test
             - coverage
-  
+            - lint
+            - build
