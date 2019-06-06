@@ -6,19 +6,22 @@ defaults: &defaults
 
   working_directory: ~/app
 
+references:
+  container_config: &circleci-commitlint
+    docker:
+      - image: williamlauze/circleci-commitlint:latest
+    working_directory: /www
+
 orbs:
   codecov: codecov/codecov@1.0.4
 
 jobs:
   commitlint:
-    docker:
-      - image: williamlauze/circleci-commitlint:latest
-    working_directory: ~/app
-
+    <<: *circleci-commitlint
     steps:
       - checkout
       - run:
-          name: Lint commit messages
+          name: commitlint
           command: |
             /bin/sh /.scripts/commitlint_range.sh
 
@@ -139,9 +142,8 @@ jobs:
           at: .
 
       - codecov/upload:
-          conf: .codecov.yml
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: coverage
+          file: ~/app/coverage
 
 workflows:
   version: 2
