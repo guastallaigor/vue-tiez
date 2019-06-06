@@ -22,6 +22,7 @@ yarn-error.log*
 
 # Coverage directory used by tools like istanbul
 coverage
+junit.xml
 
 # Static
 storybook-static

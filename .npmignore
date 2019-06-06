@@ -18,3 +18,8 @@ config
 stories
 tests
 docs
+
+# Test files
+coverage
+junit.xml
+.codecov.yml
