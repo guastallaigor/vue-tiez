@@ -125,14 +125,19 @@ jobs:
 
       - run:
           name: Generate and upload coverage report
-          command: yarn test:unit --coverageDirectory=coverage
+          command: yarn test:unit --coverage --ci --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT: "test-reports/jest-junit.xml"
+
+      - store_test_results:
+          path: test-reports
 
       - store_artifacts:
-          path: coverage
+          path: test-reports
 
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: ~/app/coverage/index.html
+          file: test-reports/jest-junit.xml
           flags: frontend
 
 workflows:
@@ -144,7 +149,7 @@ workflows:
       - commitlint:
           filters:
             branches:
-              only: master
+              ignore: master
       - install-dependencies:
           requires:
             - checkout
