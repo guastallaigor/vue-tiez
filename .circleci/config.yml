@@ -125,17 +125,17 @@ jobs:
 
       - run:
           name: Generate and upload coverage report
-          command: yarn test:unit --coverage --ci
+          command: yarn test:unit --coverage
 
       - store_test_results:
-          path: test-reports
+          path: ~/app/test-reports
 
       - store_artifacts:
-          path: test-reports
+          path: ~/app/test-reports
 
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: test-reports/*
+          file: ~/app/test-reports/*
           flags: frontend
 
 workflows:
