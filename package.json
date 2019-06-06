@@ -1,6 +1,6 @@
 {
   "name": "vue-tiez",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "private": false,
   "description": "Vue.js component library that uses ZEIT Design System",
   "homepage": "https://github.com/guastallaigor/vue-tiez#readme",
@@ -64,6 +64,7 @@
   },
   "files": [
     "src/*",
+    "css/*",
     "scss/*",
     "*.json",
     "*.js"

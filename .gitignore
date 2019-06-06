@@ -27,4 +27,4 @@ junit.xml
 # Static
 storybook-static
 yarn-error.log
-/css
+css
