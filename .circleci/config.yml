@@ -6,24 +6,20 @@ defaults: &defaults
 
   working_directory: ~/app
 
-references:
-  container_config: &circleci-commitlint
-    docker:
-      - image: williamlauze/circleci-commitlint:latest
-    working_directory: /www
-
 orbs:
   codecov: codecov/codecov@1.0.4
 
 jobs:
   commitlint:
-    <<: *circleci-commitlint
+    docker:
+      - image: williamlauze/circleci-commitlint:latest
+    working_directory: ~/app
+
     steps:
       - checkout
       - run:
-          name: commitlint
-          command: |
-            /bin/sh /.scripts/commitlint_range.sh
+          name: Lint commit messages
+          command: /bin/sh /.scripts/commitlint_range.sh
 
   checkout:
     <<: *defaults
@@ -134,13 +130,6 @@ jobs:
       - store_artifacts:
           path: coverage
 
-  upload-coverage:
-    <<: *defaults
-
-    steps:
-      - attach_workspace:
-          at: .
-
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
           file: ~/app/coverage
@@ -151,7 +140,10 @@ workflows:
   main:
     jobs:
       - checkout
-      - commitlint
+      - commitlint:
+          filters:
+            branches:
+              ignore: master
       - install-dependencies:
           requires:
             - checkout
@@ -164,9 +156,3 @@ workflows:
       - lint:
           requires:
             - install-dependencies
-      - upload-coverage:
-          requires:
-            - install-dependencies
-            - test
-            - coverage
-            - lint
