@@ -144,7 +144,7 @@ workflows:
       - commitlint:
           filters:
             branches:
-              only: master
+              ignore: master
       - install-dependencies:
           requires:
             - checkout
