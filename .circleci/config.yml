@@ -139,6 +139,40 @@ jobs:
           file: ~/app/coverage/*.json
           flags: frontend
 
+  build:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - restore_cache:
+          name: Restore Build Cache
+          keys:
+            - build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+            - build-{{ .Branch }}
+            - build-master
+            - build-
+
+      - run:
+          name: Add Yarn Binary Folder To $PATH
+          command: export PATH="$PATH:`yarn global bin`"
+
+      - run:
+          name: Build the Framework
+          command: yarn run build
+
+      - save_cache:
+          name: Save Build Cache
+          key: build-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - css
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - css
+
 workflows:
   version: 2
 
@@ -159,5 +193,8 @@ workflows:
           requires:
             - install-dependencies
       - lint:
+          requires:
+            - install-dependencies
+      - build:
           requires:
             - install-dependencies

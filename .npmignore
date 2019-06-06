@@ -20,8 +20,13 @@ config
 stories
 tests
 docs
+yarn-error.log
 
 # Test files
 coverage
 junit.xml
 .codecov.yml
+
+# SCSS and scripts
+scss
+scripts

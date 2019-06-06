@@ -78,17 +78,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-svg.z-icon {
-  shape-rendering: crispEdges;
-
-  circle {
-    transition: all 0.2s ease 0s;
-  }
-
-  &:hover circle {
-    stroke: rgb(153, 153, 153);
-  }
-}
-</style>

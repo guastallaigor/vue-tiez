@@ -1,0 +1,53 @@
+.z-collapse {
+  border-top: 1px solid rgb(234, 234, 234);
+
+  .collapse {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgb(234, 234, 234);
+
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 75px;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: none;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      outline-width: 0;
+      margin: 0;
+
+      > span:first-child {
+        margin-right: 1em;
+        line-height: 1.35em;
+        padding: 15px 0;
+      }
+    }
+
+    .collapse-content {
+      overflow-y: hidden;
+      transition: height 0.2s ease 0s;
+
+      > div {
+        padding-bottom: 20px;
+        overflow-y: hidden;
+
+        p {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 24px;
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+
+    &.dark {
+      h3,
+      div p {
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}

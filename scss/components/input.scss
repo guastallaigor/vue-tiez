@@ -1,0 +1,131 @@
+.z-input {
+  .label {
+    background-color: #fafafa;
+    border-bottom-left-radius: 5px;
+    border-bottom: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    border-top-left-radius: 5px;
+    border-top: 1px solid #e1e1e1;
+    color: #9b9b9b;
+    font-size: 14px;
+    line-height: 1;
+    margin: 0;
+    padding: 10px;
+    pointer-events: none;
+    width: initial;
+
+    &.dark {
+      background-color: #111;
+      border-bottom: 1px solid #333;
+      border-left: 1px solid #333;
+      border-top: 1px solid #333;
+    }
+  }
+
+  .wrapper {
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+    display: inline-flex;
+    height: 37px;
+    position: relative;
+    transition: border 0.2s ease, color 0.2s ease;
+    vertical-align: middle;
+    width: 100%;
+    background: #fff;
+
+    input {
+      background-color: transparent;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      position: relative;
+      box-sizing: border-box;
+      display: block;
+      font-size: 14px;
+      line-height: 27px;
+      outline: 0;
+      width: 100%;
+      color: rgb(0, 0, 0);
+      caret-color: rgb(0, 0, 0);
+      height: 100%;
+      opacity: 1;
+
+      &:disabled {
+        color: #999;
+        border-radius: 5px;
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+    }
+
+    &.inner-input {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      flex: 1;
+    }
+
+    &:not(.dark) {
+      input {
+        background: #fafafa;
+      }
+    }
+
+    &.dark {
+      border: 1px solid #333;
+      background: #000;
+
+      input {
+        color: #fff;
+        caret-color: #fff;
+      }
+    }
+
+    &.disabled:not(.dark) {
+      background: #fafafa;
+    }
+
+    &.focused {
+      border: 1px solid #888;
+
+      &.dark {
+        border: 1px solid #999;
+      }
+    }
+
+    &.error {
+      border: 1px solid red;
+
+      input {
+        color: red;
+
+        &::placeholder {
+          color: red;
+        }
+      }
+
+      &.focused {
+        border: 1px solid red;
+        color: red;
+      }
+    }
+
+    .icon {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      vertical-align: middle;
+      padding: 0 14px;
+    }
+
+    div:first-child {
+      display: block;
+      margin: 4px 10px;
+      position: relative;
+      width: 100%;
+    }
+  }
+}

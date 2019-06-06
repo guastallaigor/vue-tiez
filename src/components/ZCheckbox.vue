@@ -66,30 +66,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.z-checkbox {
-  cursor: default;
-
-  span {
-    display: inline-flex;
-    position: relative;
-
-    input[type="checkbox"] {
-      margin: 3px 3px 3px 4px;
-    }
-
-    svg {
-      cursor: pointer;
-      display: inline-block;
-      height: 12px;
-      width: 12px;
-      outline: 0;
-
-      &.disabled {
-        cursor: not-allowed;
-      }
-    }
-  }
-}
-</style>
