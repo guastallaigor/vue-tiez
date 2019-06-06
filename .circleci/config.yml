@@ -132,7 +132,7 @@ jobs:
 
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: ~/app/coverage/index.html
+          file: ~/app/coverage/*.html
           flags: frontend
 
 workflows:
