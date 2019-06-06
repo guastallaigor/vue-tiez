@@ -125,9 +125,7 @@ jobs:
 
       - run:
           name: Generate and upload coverage report
-          command: yarn test:unit --coverage --ci --reporters=default --reporters=jest-junit
-          environment:
-            JEST_JUNIT_OUTPUT: "test-reports/jest-junit.xml"
+          command: yarn test:unit --coverage --ci
 
       - store_test_results:
           path: test-reports
@@ -137,7 +135,6 @@ jobs:
 
       - codecov/upload:
           token: dca17109-8079-4335-b0ff-f0bf418672f6
-          file: test-reports/jest-junit.xml
           flags: frontend
 
 workflows:
