@@ -139,10 +139,10 @@ export default {
 </script>
 
 <style lang="scss">
-@mixin set-color-bg($color, $bg, $isbg: true) {
+@mixin set-color-bg($color, $bg, $isBg: true) {
   color: $color;
 
-  @if ($isbg == true) {
+  @if ($isBg == true) {
     background: $bg;
   }
 
@@ -151,16 +151,16 @@ export default {
   }
 }
 
-@mixin set-border-color-bg($border: rgb(0, 0, 0), $color: rgb(0, 0, 0), $bg: rgb(255, 255, 255), $isbg: true) {
+@mixin set-border-color-bg($border: rgb(0, 0, 0), $color: rgb(0, 0, 0), $bg: rgb(255, 255, 255), $isBg: true) {
   border: 1px solid $border;
 
-  @include set-color-bg($color, $bg, $isbg);
+  @include set-color-bg($color, $bg, $isBg);
 }
 
-@mixin set-bordercolor-color-bg($bordercolor: rgb(0, 0, 0), $color: rgb(0, 0, 0), $bg: rgb(255, 255, 255), $isbg: true) {
-  border-color: $bordercolor;
+@mixin set-bordercolor-color-bg($borderColor: rgb(0, 0, 0), $color: rgb(0, 0, 0), $bg: rgb(255, 255, 255), $isBg: true) {
+  border-color: $borderColor;
 
-  @include set-color-bg($color, $bg, $isbg);
+  @include set-color-bg($color, $bg, $isBg);
 }
 
 @mixin set-link($color: #0d7df7) {

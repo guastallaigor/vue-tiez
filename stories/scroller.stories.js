@@ -62,32 +62,52 @@ ZScrollerStory.add('Slot', () => ({
       </section>
     </z-scroller>`
 }))
-// .add('JSX', () => ({
-//   components: { ZScroller },
-//   props: {
-//     content: {
-//       type: String,
-//       default: text('Content', 'This is a note that details something important.')
-//     },
-//     type: {
-//       type: String,
-//       default: radios('Type', {
-//         hint: 'hint',
-//         default: '',
-//         alert: 'alert',
-//         warning: 'warning'
-//       }, 'hint')
-//     },
-//     customLabel: {
-//       type: String,
-//       default: text('Custom label', '')
-//     },
-//     dark: {
-//       type: Boolean,
-//       default: boolean('Dark', false)
-//     }
-//   },
-//   render () {
-//     return <ZScroller content={this.content} dark={this.dark} type={this.type} customLabel={this.customLabel} />
-//   }
-// }))
+  .add('JSX', () => ({
+    components: { ZScroller },
+    props: {
+      dark: {
+        type: Boolean,
+        default: boolean('Dark', false)
+      },
+      width: {
+        type: String,
+        default: text('Width', '600px')
+      }
+    },
+    render () {
+      return (
+        <ZScroller width={this.width} dark={this.dark}>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+          <section class="jsx-486962659">
+            <section class="jsx-536543241">▲</section>
+          </section>
+        </ZScroller>
+      )
+    }
+  }))

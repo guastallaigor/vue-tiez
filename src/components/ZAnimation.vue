@@ -17,8 +17,8 @@
     </svg>
   </div>
 </template>
-<script>
 
+<script>
 export default {
   name: 'z-animation',
   props: {

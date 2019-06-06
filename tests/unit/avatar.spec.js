@@ -96,6 +96,20 @@ describe('When I create the ZAvatar component', () => {
     expect(avatar.classes()).toEqual(['z-avatar'])
   })
 
+  it('should validate all the props size', () => {
+    const wrapper = createComponent({ size: '' })
+    const size = wrapper.vm.$options.props.size
+    expect(size.required).toBeFalsy()
+    expect(size.type).toBe(String)
+    expect(size.default).toBe('')
+    expect(size.validator && size.validator('small')).toBeTruthy()
+    expect(size.validator && size.validator('')).toBeTruthy()
+    expect(size.validator && size.validator('medium')).toBeTruthy()
+    expect(size.validator && size.validator('large')).toBeTruthy()
+    const avatar = wrapper.find('.z-avatar')
+    expect(avatar.exists()).toBe(true)
+  })
+
   it('should match snapshot', () => {
     const wrapper = createComponent({
       src: 'https://ik.imagekit.io/6xhf1gnexgdgk/igor2_HJhiHMa54.png',

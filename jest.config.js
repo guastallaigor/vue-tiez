@@ -1,7 +1,7 @@
 module.exports = {
   moduleFileExtensions: [
     'js',
-    'jsx',
+    // 'jsx',
     // 'json',
     'vue'
   ],
@@ -21,8 +21,9 @@ module.exports = {
   ],
   testURL: 'http://localhost/',
   coverageDirectory: './coverage/',
-  collectCoverageFrom: ['src/components/*.{vue}', '!**/node_modules/**', '!src/components/ZSlider.vue'],
   collectCoverage: true,
+  coverageReporters: ['html', 'text'],
+  collectCoverageFrom: ['!src/components/ZSlider.vue', 'src/components/*.{js,vue}', '!**/node_modules/**'],
   transformIgnorePatterns: [
     'node_modules/(?!(babel-jest|jest-vue-preprocessor)/)'
   ]
