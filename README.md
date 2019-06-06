@@ -4,6 +4,7 @@
 </p>
 
 <p align="center">
+    <a href="https://circleci.com/gh/guastallaigor/vue-tiez/tree/master"><img src="https://circleci.com/gh/guastallaigor/vue-tiez/tree/master.svg?style=svg" alt="Build"></a>
     <a href="https://codecov.io/gh/guastallaigor/vue-tiez"><img src="https://codecov.io/gh/guastallaigor/vue-tiez/branch/master/graph/badge.svg" alt="Code Coverage"></a>
     <a href="https://www.npmjs.com/package/vue-tiez"><img src="https://img.shields.io/npm/dt/vue-tiez.svg" alt="Total Downloads"></a>
     <a href="https://github.com/vue-tiez/vue-tiez/releases"><img src="https://img.shields.io/npm/v/vue-tiez.svg" alt="Latest Release"></a>
