@@ -1,3 +1,5 @@
+<h1 align="center"><b>Working in progress (WIP)</h1></b>
+
 <p align="center">
     <a href="https://vue-tiez.now.sh/" target="_blank"><img width="500" src="https://ik.imagekit.io/6xhf1gnexgdgk/Logo-Horizontal_NlA5XFnRs.svg"></a><br>
     Vue.js component library that uses <a href="https://zeit.co/design">ZEIT Design System</a>
