@@ -1,5 +1,5 @@
 <template>
-  <div class="z-input" :style="label ? 'display:inline-flex' : ''">
+  <div class="z-input" :style="label ? 'display:inline-flex' : ''" :class="{ right: withLabelRight }">
     <span class="label" :class="{ dark }" v-if="label">{{ label }}</span>
     <div class="wrapper" :class="getClasses">
       <span class="icon" v-if="icon && !withIconRight"><z-icon :name="icon" size="15px" :dark="dark" /></span>
@@ -59,6 +59,10 @@ export default {
       type: String,
       default: ''
     },
+    withLabelRight: {
+      type: Boolean,
+      default: false
+    },
     placeholder: {
       type: String,
       default: ''
@@ -82,7 +86,7 @@ export default {
   }),
   computed: {
     getClasses () {
-      const { disabled, dark, focused, error, icon, label } = this
+      const { disabled, dark, focused, error, icon, label, withLabelRight } = this
 
       return {
         disabled,
