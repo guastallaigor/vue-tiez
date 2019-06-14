@@ -39,6 +39,31 @@ zBadgeStory.add('Template', () => ({
   },
   template: '<z-badge :content="content" :color="color" :with-text="withText" />'
 }))
+  .add('Slot', () => ({
+    components: { ZBadge },
+    props: {
+      content: {
+        type: String,
+        default: text('Content', '10')
+      },
+      withText: {
+        type: Boolean,
+        default: boolean('With text', false)
+      },
+      color: {
+        type: String,
+        default: radios('Color', {
+          'black': 'black',
+          'red': 'red',
+          'dark': 'dark'
+        }, 'black')
+      }
+    },
+    template: `<z-badge :color="color" :with-text="withText">
+      <span>{{ content }}</span>
+    </z-badge>
+    `
+  }))
   .add('JSX', () => ({
     components: { ZBadge },
     props: {

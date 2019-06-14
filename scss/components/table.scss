@@ -1,6 +1,5 @@
 @mixin set-div($mw, $setFlex: false) {
   div {
-    -webkit-box-align: center;
     align-items: center;
     display: flex;
     min-height: $mw;

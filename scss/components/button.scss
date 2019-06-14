@@ -49,7 +49,7 @@
   align-items: center;
   color: rgb(255, 255, 255);
   background: rgb(0, 0, 0);
-  display: inline-flex;
+  display: inline-block;
   min-width: 200px;
   height: 40px;
   padding: 0 25px;
@@ -64,7 +64,7 @@
   font-weight: 100;
   position: relative;
   overflow: hidden;
-  transition: border 0.2s, background 0.2s, color 0.2s ease-out;
+  transition: all 0.2s ease 0s;
   border-radius: 5px;
   white-space: nowrap;
   text-decoration: none;
@@ -245,6 +245,11 @@
   &.shadow {
     font-weight: 400;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+
+    &.disabled:not(.dark),
+    &.secondary:not(.dark) {
+      color: #000;
+    }
 
     &:not(.disabled) {
       &:hover {

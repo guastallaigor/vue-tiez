@@ -1,5 +1,5 @@
 <template>
-  <div class="z-scroller" :class="{ dark }" :style="width ? `width:${width}` : ''">
+  <div class="z-scroller" :class="{ dark }" :style="`width:${width}`">
     <div class="inner"><slot/></div>
   </div>
 </template>

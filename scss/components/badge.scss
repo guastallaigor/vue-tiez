@@ -3,19 +3,21 @@
   display: inline-block;
   font-size: 10px;
   font-weight: bold;
-  line-height: 15px;
-  height: 15px;
-  min-width: 15px;
+  min-height: 14px;
+  line-height: 14px;
   text-align: center;
-  padding: 0 4px;
+  vertical-align: middle;
+  background: rgb(255, 0, 0);
+  padding: 0px 4px;
   border-radius: 7px;
 
   &.with-text {
     font-weight: normal;
     text-transform: uppercase;
-    min-height: 15px;
-    padding: 4px 10px;
+    min-height: 20px;
+    padding: 0px 10px;
     border-radius: 20px;
+    line-height: 20px;
   }
 
   &.black {

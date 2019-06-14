@@ -22,7 +22,7 @@ describe('When I create the ZCode component', () => {
     expect(code.exists()).toBe(true)
     expect(code.classes().length).toBe(1)
     expect(code.classes()).toEqual(['z-code'])
-    expect(code.html()).toBe('<div class="z-code">Content</div>')
+    expect(code.text()).toBe('Content')
   })
 
   it('should have a content with dolar', () => {
@@ -31,7 +31,7 @@ describe('When I create the ZCode component', () => {
     expect(code.exists()).toBe(true)
     expect(code.classes().length).toBe(2)
     expect(code.classes()).toEqual(['z-code', 'with-dolar'])
-    expect(code.html()).toBe('<div class="z-code with-dolar">Content</div>')
+    expect(code.text()).toBe('Content')
   })
 
   it('should have a content and dark class', () => {
@@ -40,7 +40,7 @@ describe('When I create the ZCode component', () => {
     expect(code.exists()).toBe(true)
     expect(code.classes().length).toBe(2)
     expect(code.classes()).toEqual(['z-code', 'dark'])
-    expect(code.html()).toBe('<div class="z-code dark">Content</div>')
+    expect(code.text()).toBe('Content')
   })
 
   it('should have a slot instead of a content', () => {
@@ -49,7 +49,7 @@ describe('When I create the ZCode component', () => {
     expect(code.exists()).toBe(true)
     expect(code.classes().length).toBe(1)
     expect(code.classes()).toEqual(['z-code'])
-    expect(code.html()).toBe('<div class="z-code"><span>test with slot</span></div>')
+    expect(code.html()).toBe('<div class="z-code" style="width: auto;"><span>test with slot</span></div>')
   })
 
   it('should match snapshot', () => {

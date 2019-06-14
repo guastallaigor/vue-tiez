@@ -6,7 +6,7 @@ Thanks for your interest in contributing to Vue Tiez! ❤️
 
 **Please ask first before starting work on any significant new features!**
 
-The main goal right now is that we have all the components from [Zeit Design System][zeit-design]
+The main goal right now is that we have all the components and sections from [Zeit Design System][zeit-design]
 
 ## Coding standards
 

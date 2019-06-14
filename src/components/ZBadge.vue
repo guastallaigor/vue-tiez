@@ -1,5 +1,8 @@
 <template>
-  <span class="z-badge" :class="[color, {'with-text': withText}]">{{ content }}</span>
+  <span class="z-badge" :class="[color, {'with-text': withText}]">
+    {{ content }}
+    <slot/>
+  </span>
 </template>
 
 <script>

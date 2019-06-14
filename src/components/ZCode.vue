@@ -1,5 +1,5 @@
 <template>
-  <div class="z-code" :class="getClasses">
+  <div class="z-code" :class="getClasses" :style="`width: ${width};`">
     <template v-if="content">{{ content }}</template>
     <slot v-else />
   </div>
@@ -16,6 +16,10 @@ export default {
     withDolar: {
       type: Boolean,
       default: false
+    },
+    width: {
+      type: String,
+      default: 'auto'
     },
     dark: {
       type: Boolean,

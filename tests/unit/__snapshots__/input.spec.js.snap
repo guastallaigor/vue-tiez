@@ -6,6 +6,7 @@ exports[`When I create the ZInput component should match snapshot 1`] = `
   <div class="wrapper">
     <!---->
     <div><input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="" maxlength="" type="text"></div>
+    <!---->
   </div>
 </div>
 `;

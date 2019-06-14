@@ -104,10 +104,21 @@ export default {
       }
     },
     getIconColor () {
-      const { type, hover } = this
+      const { shadow, type, hover, dark } = this
+
+      if (shadow) {
+        return {
+          primary: '#fff',
+          secondary: 'rgb(102, 102, 102)',
+          warning: '#fff',
+          highlight: '#fff',
+          link: '#0d7df7',
+          abort: '#666'
+        }[type]
+      }
 
       return {
-        primary: hover ? '#000' : '#fff',
+        primary: hover && dark ? '#fff' : hover ? '#000' : dark ? '#000' : '#fff',
         secondary: hover ? '#000' : 'rgb(102, 102, 102)',
         warning: hover ? '#eb5757' : '#fff',
         highlight: hover ? '#007aff' : '#fff',

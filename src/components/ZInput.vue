@@ -2,7 +2,7 @@
   <div class="z-input" :style="label ? 'display:inline-flex' : ''">
     <span class="label" :class="{ dark }" v-if="label">{{ label }}</span>
     <div class="wrapper" :class="getClasses">
-      <span class="icon" v-if="icon"><z-icon :name="icon" :dark="dark" /></span>
+      <span class="icon" v-if="icon && !withIconRight"><z-icon :name="icon" size="15px" :dark="dark" /></span>
       <div>
         <input
           ref="input"
@@ -19,6 +19,7 @@
           v-model="valueComp"
           >
       </div>
+      <span class="icon" v-if="icon && withIconRight"><z-icon :name="icon" size="15px" :dark="dark" /></span>
     </div>
   </div>
 </template>
@@ -50,6 +51,10 @@ export default {
       type: String,
       default: ''
     },
+    withIconRight: {
+      type: Boolean,
+      default: false
+    },
     label: {
       type: String,
       default: ''
@@ -69,7 +74,7 @@ export default {
     },
     maxLength: {
       type: [String, Number],
-      default: 0
+      default: null
     }
   },
   data: () => ({

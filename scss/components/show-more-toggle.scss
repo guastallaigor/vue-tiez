@@ -3,12 +3,10 @@
   margin-top: 20px;
   margin-left: 20px;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
   min-height: 30px;
 
   .line {
-    -webkit-box-flex: 1;
     flex-grow: 1;
     height: 1px;
     background-color: rgb(234, 234, 234);

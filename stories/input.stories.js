@@ -50,6 +50,10 @@ zInputStory.add('Template', () => ({
       type: String,
       default: select('Icon', iconObj, null)
     },
+    withIconRight: {
+      type: Boolean,
+      default: boolean('With icon right', false)
+    },
     placeholder: {
       type: String,
       default: text('Placeholder', 'The Evil Rabbit')
@@ -73,6 +77,7 @@ zInputStory.add('Template', () => ({
     :disabled="disabled"
     :error="error"
     :icon="icon"
+    :with-icon-right="withIconRight"
     :label="label"
     :placeholder="placeholder"
     :type="type"
@@ -113,6 +118,10 @@ zInputStory.add('Template', () => ({
         type: String,
         default: select('Icon', iconObj, null)
       },
+      withIconRight: {
+        type: Boolean,
+        default: boolean('With icon right', false)
+      },
       placeholder: {
         type: String,
         default: text('Placeholder', 'The Evil Rabbit')
@@ -137,6 +146,7 @@ zInputStory.add('Template', () => ({
         disabled={this.disabled}
         error={this.error}
         icon={this.icon}
+        withIconRight={this.withIconRight}
         label={this.label}
         placeholder={this.placeholder}
         type={this.type}

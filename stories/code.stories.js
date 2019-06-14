@@ -28,31 +28,39 @@ zCodeStory.add('Template', () => ({
       type: Boolean,
       default: boolean('With dolar', false)
     },
+    width: {
+      type: String,
+      default: text('Width', 'auto')
+    },
     dark: {
       type: Boolean,
       default: boolean('Dark', false)
     }
   },
-  template: '<z-code :content="content" :dark="dark" :with-dolar="withDolar" />'
+  template: '<z-code :content="content" :dark="dark" :with-dolar="withDolar" :width="width" />'
 }))
   .add('Slot', () => ({
     components: { ZCode },
     props: {
       content: {
         type: String,
-        default: text('Content', '')
+        default: text('Content', 'npm --version')
       },
       withDolar: {
         type: Boolean,
         default: boolean('With dolar', false)
+      },
+      width: {
+        type: String,
+        default: text('Width', 'auto')
       },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
       }
     },
-    template: `<z-code :dark="dark">
-      <span>$ npm --version</span>
+    template: `<z-code :dark="dark" :width="width" :with-dolar="withDolar">
+      <span>{{ content }}</span>
     </z-code>`
   }))
   .add('JSX', () => ({
@@ -66,12 +74,16 @@ zCodeStory.add('Template', () => ({
         type: Boolean,
         default: boolean('With dolar', false)
       },
+      width: {
+        type: String,
+        default: text('Width', 'auto')
+      },
       dark: {
         type: Boolean,
         default: boolean('Dark', false)
       }
     },
     render () {
-      return <ZCode content={this.content} dark={this.dark} withDolar={this.withDolar} />
+      return <ZCode content={this.content} dark={this.dark} withDolar={this.withDolar} width={this.width} />
     }
   }))

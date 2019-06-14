@@ -3,12 +3,16 @@ import ZBadge from '../../src/components/ZBadge'
 
 describe('When I create the ZBadge component', () => {
   const createComponent = (propsData = {}, slot) => {
-    return shallowMount(ZBadge, {
-      propsData,
-      slots: {
-        default: slot || 'ZBadge'
+    const object = slot
+      ? {
+        propsData,
+        slots: {
+          default: slot
+        }
       }
-    })
+      : { propsData }
+
+    return shallowMount(ZBadge, object)
   }
 
   it('should be a Vue instance', () => {
@@ -22,7 +26,7 @@ describe('When I create the ZBadge component', () => {
     expect(badge.exists()).toBe(true)
     expect(badge.classes().length).toBe(2)
     expect(badge.classes()).toEqual(['z-badge', 'black'])
-    expect(badge.html()).toBe('<span class="z-badge black">10</span>')
+    expect(badge.text()).toBe('10')
   })
 
   it('should have a number content and a black color', () => {
@@ -31,7 +35,7 @@ describe('When I create the ZBadge component', () => {
     expect(badge.exists()).toBe(true)
     expect(badge.classes().length).toBe(2)
     expect(badge.classes()).toEqual(['z-badge', 'black'])
-    expect(badge.html()).toBe('<span class="z-badge black">10</span>')
+    expect(badge.text()).toBe('10')
   })
 
   it('should have a number content and a red color', () => {
@@ -40,7 +44,7 @@ describe('When I create the ZBadge component', () => {
     expect(badge.exists()).toBe(true)
     expect(badge.classes().length).toBe(2)
     expect(badge.classes()).toEqual(['z-badge', 'red'])
-    expect(badge.html()).toBe('<span class="z-badge red">10</span>')
+    expect(badge.text()).toBe('10')
   })
 
   it('should have a number content and a dark color', () => {
@@ -49,7 +53,7 @@ describe('When I create the ZBadge component', () => {
     expect(badge.exists()).toBe(true)
     expect(badge.classes().length).toBe(2)
     expect(badge.classes()).toEqual(['z-badge', 'dark'])
-    expect(badge.html()).toBe('<span class="z-badge dark">10</span>')
+    expect(badge.text()).toBe('10')
   })
 
   it('should have a text content and a withText prop passed', () => {
@@ -58,7 +62,7 @@ describe('When I create the ZBadge component', () => {
     expect(badge.exists()).toBe(true)
     expect(badge.classes().length).toBe(3)
     expect(badge.classes()).toEqual(['z-badge', 'black', 'with-text'])
-    expect(badge.html()).toBe('<span class="z-badge black with-text">Content</span>')
+    expect(badge.text()).toBe('Content')
   })
 
   it('should validate all the props color', () => {

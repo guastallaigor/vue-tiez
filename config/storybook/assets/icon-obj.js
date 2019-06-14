@@ -48,6 +48,7 @@ export default {
   xlink: 'xlink',
   github: 'github',
   slack: 'slack',
+  spectrum: 'spectrum',
   twitter: 'twitter',
   youtube: 'youtube'
 }
