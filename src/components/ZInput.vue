@@ -86,7 +86,7 @@ export default {
   }),
   computed: {
     getClasses () {
-      const { disabled, dark, focused, error, icon, label, withLabelRight } = this
+      const { disabled, dark, focused, error, icon, label } = this
 
       return {
         disabled,
